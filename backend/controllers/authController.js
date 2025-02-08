@@ -31,6 +31,29 @@ const loginWithUsername = async (req, res) => {
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h'});
         res.json({ token })
     } catch (e) {
-        res.json({message: 'Error Loging in with username', e})
+        res.json({message: 'Error Loging in with username ', e})
     }
 }
+
+const loginWithEmail = async (req, res) => {
+    const {email, password} = req.body;
+    
+    try {
+        const user = await User.findByEmail(email);
+        if (!user){
+            return res.status(500).json({message: 'User not found'});
+        }
+
+        const isMatch = await bcrypt.compare(user.password, password);
+        if (!isMatch){
+            return res.status(400).json({message: 'invalid password'});
+        }
+
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h'});
+        res.json({ token })
+    } catch (e) {
+        res.json({message: 'Error Loging in with email ', e})
+    }
+}
+
+module.exports = {signup, loginWithEmail, loginWithUsername};

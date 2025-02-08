@@ -55,3 +55,5 @@ class Book{
         return rows;
     }
 }
+
+module.exports = Book;
