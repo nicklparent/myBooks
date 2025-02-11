@@ -1,5 +1,14 @@
 const Book = require('../models/book');
 
+const createBook = async(req, res) => {
+    const { id, name, author, genre, rating } = req.params;
+    try {
+        const insertId = Book.create(id, name, author, genre, rating);
+        res.status(200).send({message: 'Book added to library', insertId: insertId})
+    } catch(e){
+        res.status(500).send({message: 'Failed to add book to library'});
+    }
+}
 const getAllBooks = async (req, res) => {
     try {
         const books = await Book.getAllBooks();
@@ -20,4 +29,4 @@ const getBookById = async (req, res) => {
     }
 }
 
-module.exports = {getAllBooks, getBookById};
+module.exports = {createBook, getAllBooks, getBookById};
