@@ -1,0 +1,33 @@
+/* CSS 'class' to make styling more consistent across many pages */
+:root{
+    --common-padding: 0.7rem;
+    --common-margin: 0.5rem;
+}
+
+.w-full{
+    width: 100%;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.between-center{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.padding{
+    padding: var(--common-padding);
+}
+
+.text-input{
+    padding: var(--common-padding);
+    border: 1px black solid;
+    border-radius: 0.8rem;
+    margin: var(--common-margin);
+}

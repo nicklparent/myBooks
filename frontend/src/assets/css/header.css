@@ -1,0 +1,10 @@
+.header > a{
+    text-decoration: none;
+    color: black;
+    font-family: 'American Typewriter', 'serif'; 
+}
+@media screen and (min-width: 900px) {
+    .header > a {
+        font-size: x-large;
+    }
+}
