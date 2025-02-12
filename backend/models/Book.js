@@ -1,3 +1,7 @@
+/**
+ * The Book model needs to be combatable with isbn API for future development
+ */
+
 const db = require('../config/db');
 
 class Book{
