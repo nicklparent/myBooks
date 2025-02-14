@@ -2,9 +2,38 @@
     text-decoration: none;
     color: black;
     font-family: 'American Typewriter', 'serif'; 
+    font-size: x-large;
 }
-@media screen and (min-width: 900px) {
-    .header > a {
-        font-size: x-large;
-    }
+
+.search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 2rem;
+}
+.search > .text-input{
+    margin-right: 0;
+    border-right: 0;
+    border-radius: 0.8rem 0 0 0.8rem ;
+}
+
+.search-button{
+    padding: 0.7rem;
+    margin: 0;
+    border-radius: 0 0.8rem 0.8rem 0;
+    border: 1px solid grey;
+    background-color: black;
+    color: aliceblue;
+}
+
+.search-button:hover{
+    transition: 0.5s;
+    transform: scale(1.1);
+    background-color: #575050;
+    box-shadow: 1rem grey;
+} 
+.app-bar{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
 }
