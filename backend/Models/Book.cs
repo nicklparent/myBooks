@@ -1,8 +1,8 @@
 namespace backend.Models{
     public class Book {
-        private int Id { get; set; }
-        private string Title { get; set; }
-        private string Author { get; set; }
-        private string Genre { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string Genre { get; set; }
     }
 }
