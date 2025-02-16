@@ -2,6 +2,7 @@ import React from 'react';
 import { FiBook } from 'react-icons/fi';
 import { RiBookShelfLine } from 'react-icons/ri';
 import { FaUserFriends } from 'react-icons/fa';
+import { MdOutlineExplore } from "react-icons/md";
 import '../assets/css/globals.css';
 import '../assets/css/header.css';
 
@@ -28,6 +29,7 @@ export function Header(){
                 </a>
                 <a href="./explore">
                 {/* explore icon */}
+                <MdOutlineExplore color='black' size={iconSize}/>
                 </a>
                 <a href="./connections">
                 {/* people icon */}
