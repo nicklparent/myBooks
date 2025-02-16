@@ -1,5 +1,16 @@
-**/node_modules/**
+# Ignore node_modules directories
+**/node_modules/
+
+# Ignore .env files
 **/.env
 
-obj/**
-.vs
+# Ignore Visual Studio files
+.vs/
+
+# Ignore backend obj directories
+backend/obj/
+obj/
+
+# Ignore appsettings files
+backend/appsettings.json
+backend/appsettings.Development.json
