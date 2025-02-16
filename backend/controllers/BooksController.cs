@@ -11,6 +11,7 @@ namespace backend.Controllers {
             this._bookService = _bookService;
         }
 
+        //GET: api/books
         [HttpGet]
         public IActionResult GetAllBooks() {
             var books = _bookService.GetAllBooks();
