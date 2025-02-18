@@ -1,0 +1,13 @@
+.loader {
+    border-radius: 50%;
+    border: 10px solid grey;
+    border-top: 10px solid black;
+    width: 75px;
+    height: 75px;
+    animation: loading 3s linear infinite;
+}
+
+@keyframes loading{
+    0% {rotate: 0deg;}
+    100% {rotate: 360deg;}
+}

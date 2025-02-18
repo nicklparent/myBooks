@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Loading } from '../assets/extras/loading';
 
 export function HomePage(){
     const [books, setBooks] = useState([]);
@@ -22,9 +23,10 @@ export function HomePage(){
     }, []);
 
     if (loading){
-        return <div>
-            ...Loading
-        </div>
+        return (
+            <div className='center'>
+                <Loading />
+            </div>);
     }
 
     return(
