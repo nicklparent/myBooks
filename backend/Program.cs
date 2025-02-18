@@ -1,17 +1,18 @@
-using Microsoft.EntityFrameworkCore;
-using backend.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext with MySQL
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 34)) // Specify your MySQL server version
-    )
-);
+// Add services to the container.
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Other middleware and configurations
+// Configure the HTTP request pipeline.
+
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
 app.Run();

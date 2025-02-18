@@ -1,10 +1,19 @@
-using Microsoft.EntityFrameworkCore;
-using backend.Models;
+//A class that host the database context
+using MySql.Data;
+using MySql.Data.MySqlClient;   
 
 namespace backend.Data {
-    public class AppDbContext : DbContext {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+    public class AppDbContext {
+        private AppDbContext() { }
 
-        public DbSet<Book> Books { get; set; }
+        public string server { get; set; }
+        public string database { get; set; }
+        public string user { get; set; }
+        public string password { get; set; }
+
+        public MySqlConnection Connection { get; set; }
+
+        private static AppDbContext _instance = null;
+        
     }
 }

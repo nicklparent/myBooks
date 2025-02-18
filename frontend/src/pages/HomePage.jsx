@@ -1,14 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 
 export function HomePage(){
-    const test = async () =>{
-        fetch('https://localhost:7069/weatherforecast')
-            .then(res => console.log(res.json)
-        )
+    const [books, setBooks] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(`http://localhost:5053/book`)
+        .then(response => {
+            if (!response.ok){
+                throw new Error('Fetch failed');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            
+            setBooks(data);
+            setLoading(false)
+        })
+        .catch(error => console.error('THIS DID NOT WORK'));
+    }, []);
+
+    if (loading){
+        return <div>
+            ...Loading
+        </div>
     }
+
     return(
-        <>
-        <button onClick={test}>Press me</button>
-        </>
+        <div>
+            <ul>
+                {books.map((book) => 
+                    <li key={book.id}>
+                        {book.title} by {book.author}
+                    </li>
+                )}
+            </ul>
+        </div>
     );
 }

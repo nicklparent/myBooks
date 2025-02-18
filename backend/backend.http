@@ -1,11 +1,6 @@
-@backend_HostAddress = http://localhost:5166
+@backend_HostAddress = http://localhost:5053
 
-GET {{backend_HostAddress}}/todos/
-Accept: application/json
-
-###
-
-GET {{backend_HostAddress}}/todos/1
+GET {{backend_HostAddress}}/books/
 Accept: application/json
 
 ###
