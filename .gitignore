@@ -10,6 +10,7 @@
 # Ignore backend obj directories
 backend/obj/
 obj/
+bin/
 
 # Ignore appsettings files
 backend/appsettings.json
