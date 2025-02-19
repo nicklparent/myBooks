@@ -10,11 +10,10 @@
 }
 
 .center{
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
 .between-center{
@@ -33,3 +32,5 @@
     border-radius: 0.8rem;
     margin: var(--common-margin);
 }
+
+

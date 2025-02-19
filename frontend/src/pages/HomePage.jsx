@@ -14,7 +14,6 @@ export function HomePage(){
             return response.json();
         })
         .then(data => {
-            console.log(data);
             
             setBooks(data);
             setLoading(false)
