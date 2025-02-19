@@ -52,7 +52,7 @@ export function Header() {
             </div>
             <a href="./profile">
                 {/* account icon */}
-                <FaBookOpenReader color='black' size={iconSize} className='profile-img'/>
+                <FaBookOpenReader color='navy' size={iconSize} className='profile-img'/>
             </a>
         </div>
     );
