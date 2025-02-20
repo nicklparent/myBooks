@@ -1,0 +1,29 @@
+:root{
+    --common-text-color: rgba(148, 113, 81, 0.842);  
+}
+
+.signin-page{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid grey;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-field > * {
+    padding: 0.2rem 0;
+}
+
+
+.middle-line{
+    height: auto;
+    width: 1px;
+    margin: 0 1rem;
+    background-color: black;
+}

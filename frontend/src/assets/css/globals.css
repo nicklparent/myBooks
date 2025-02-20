@@ -2,15 +2,19 @@
 :root{
     --common-padding: 0.7rem;
     --common-margin: 0.5rem;
-    --common-color: ;
 }
-
+.header{
+    height: 4vh;
+}
 .w-full{
     width: 100%;
 }
+.screen{
+    height: 100vh;
+    width: 100vw;
+}
 
 .center{
-    /* flex: 1; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,4 +37,6 @@
     margin: var(--common-margin);
 }
 
-
+.input-in{
+    padding: var(--common-padding);
+}
