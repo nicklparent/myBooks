@@ -5,10 +5,12 @@
 .signin-page{
     display: flex;
     flex-direction: row;
-    border: 1px solid grey;
+    border: 2px solid grey;
     border-radius: 12px;
     padding: 2rem;
+    background-color: #9f7431;
 }
+
 
 .input-field{
     display: flex;
@@ -22,8 +24,8 @@
 
 
 .middle-line{
-    height: auto;
     width: 1px;
     margin: 0 1rem;
     background-color: black;
 }
+

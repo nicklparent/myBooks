@@ -4,8 +4,9 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import '../assets/css/login.css';
+
+
 export function Login(){
     
     
@@ -51,9 +52,29 @@ export function Login(){
                 {/* Login Side */}
                 <div className='login'>
                     <h2>Welcome Back!</h2>
+                    <h3>Login</h3>
                     <div className='input-field'>
                         <label htmlFor="email-login">Email</label>
-                        <input type='email' name='email-login' id='email-login' className='input-in' placeholder='example@mybooks.com'/>
+                        <input 
+                            type='email'
+                            name='email-login'
+                            id='email-login' 
+                            className='input-in' 
+                            placeholder='example@mybooks.com'
+                            onChange={e => setEmail(e.target.value)}    
+                        />
+                    </div>
+
+                    <div className='input-field'>
+                        <label htmlFor="password-login">Password</label>
+                        <input 
+                            type='password'
+                            name='password-login'
+                            id='password-login' 
+                            className='input-in' 
+                            placeholder='Enter Password'
+                            onChange={e => setPassword(e.target.value)}    
+                        />
                     </div>
                 </div>
                 <div className='middle-line'>
@@ -62,7 +83,29 @@ export function Login(){
                 {/* Create account side */}
                 <div className='register'>
                     <h2>New Reader?</h2>
-                    
+                    <h3>Register</h3>
+                    <div className='input-field'>
+                        <label htmlFor="email-login-register">Email</label>
+                        <input 
+                            type='email'
+                            name='email-login'
+                            id='email-login-register' 
+                            className='input-in' 
+                            placeholder='example@mybooks.com'
+                            onChange={e => setEmail(e.target.value)}    
+                        />
+                    </div>
+                    <div className='input-field'>
+                        <label htmlFor="password-login-register">Password</label>
+                        <input 
+                            type='password'
+                            name='password-login-register'
+                            id='password-login-register' 
+                            className='input-in' 
+                            placeholder='Enter Password'
+                            onChange={e => setPassword(e.target.value)}    
+                        />
+                    </div>
                 </div>
             </div>
         </div>

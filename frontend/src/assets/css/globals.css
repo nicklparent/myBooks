@@ -2,6 +2,7 @@
 :root{
     --common-padding: 0.7rem;
     --common-margin: 0.5rem;
+    --common-radius: 12px;
 }
 .header{
     height: 4vh;
@@ -39,4 +40,8 @@
 
 .input-in{
     padding: var(--common-padding);
+    border-radius: var(--common-radius);
+    border: 1px solid black;
+    box-shadow: 4px 4px lightslategray;
+    background-color: whitesmoke;
 }
