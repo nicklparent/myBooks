@@ -7,11 +7,14 @@
 # Ignore Visual Studio files
 .vs/
 
-# Ignore backend obj directories
+# Ignore bin and obj folders only inside backend/
+backend/bin/
 backend/obj/
-obj/
-bin/
 
-# Ignore appsettings files
+# Ignore global bin and obj folders (if applicable)
+bin/
+obj/
+
+# Ignore appsettings files inside backend
 backend/appsettings.json
 backend/appsettings.Development.json
