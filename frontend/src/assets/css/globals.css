@@ -1,4 +1,6 @@
 /* CSS 'class' to make styling more consistent across many pages */
+@import "tailwindcss";
+
 :root{
     --common-padding: 0.7rem;
     --common-margin: 0.5rem;
