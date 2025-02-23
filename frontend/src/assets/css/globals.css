@@ -45,3 +45,12 @@
     box-shadow: 4px 4px lightslategray;
     background-color: whitesmoke;
 }
+
+.btn{
+    padding: var(--common-padding);
+    font-size: large;
+    color: black;
+    margin: 0.3rem;
+    border: 1px black solid;
+    border-radius: var(--common-radius);
+}
