@@ -1,38 +1,34 @@
-//A class that host the database context
-using MySql.Data;
+///<summary>A class that host the database context</summary>
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;   
 
 namespace backend.Data {
     public class AppDbContext {
-        private AppDbContext() { }
+        private readonly string connectionString;
+        public MySqlConnection Connection { get; private set; }
 
-        public string server { get; set; }
-        public string database { get; set; }
-        public string user { get; set; }
-        public string password { get; set; }
-
-        public MySqlConnection Connection { get; set; }
-
-        private static AppDbContext _instance = null;
-
-        public static AppDbContext Instance() {
-            if (_instance == null) {
-                _instance = new AppDbContext();
-            }
-            return _instance;
+        public AppDbContext(IConfiguration configuration) {
+            connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentNullException("Database conn string not found");
+            Connection = new MySqlConnection(connectionString);
         }
 
-        public bool IsConnected() {
-            if (Connection == null) {
-                string connSring = string.Format("Server={0}; database={1}; user={2}; password={3}", server, database, user, password);
-                Connection = new MySqlConnection(connSring);
-                Connection.Open();
+        public bool IsConnect() {
+            try {
+                if (Connection.State == System.Data.ConnectionState.Closed) {
+                    Connection.Open();
+                }
+            } catch (Exception e) {
+                Console.WriteLine("Error connecting to DB " + e);
+                return false;
             }
-            return true;
+            return Connection.State == System.Data.ConnectionState.Open;
         }
 
-        public void Close() {
-            Connection.Close();
+        public void CloseConnection() {
+            if  (Connection.State == System.Data.ConnectionState.Open) {
+                Connection.Close();
+
+            }
         }
     }
 }

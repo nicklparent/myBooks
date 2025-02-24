@@ -1,8 +1,13 @@
+using backend.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddSingleton<AppDbContext>(provider =>
+    new AppDbContext(provider.GetRequiredService<IConfiguration>()));
+
 
 var app = builder.Build();
 
