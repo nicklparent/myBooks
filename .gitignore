@@ -4,8 +4,9 @@
 # Ignore .env files
 **/.env
 
-# Ignore Visual Studio files
+# Ignore IDE files
 .vs/
+.idea/
 
 # Ignore bin and obj folders only inside backend/
 backend/bin/
