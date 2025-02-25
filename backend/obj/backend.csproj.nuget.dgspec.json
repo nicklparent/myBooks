@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nickl\\programming\\myBooks\\backend\\backend.csproj": {}
+    "C:\\Users\\Nickl\\programming\\mybooks\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nickl\\programming\\myBooks\\backend\\backend.csproj": {
+    "C:\\Users\\Nickl\\programming\\mybooks\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nickl\\programming\\myBooks\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\Nickl\\programming\\mybooks\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\Nickl\\programming\\myBooks\\backend\\backend.csproj",
+        "projectPath": "C:\\Users\\Nickl\\programming\\mybooks\\backend\\backend.csproj",
         "packagesPath": "C:\\Users\\Nickl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nickl\\programming\\myBooks\\backend\\obj\\",
+        "outputPath": "C:\\Users\\Nickl\\programming\\mybooks\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

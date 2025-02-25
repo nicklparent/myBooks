@@ -1,8 +1,8 @@
 /* CSS 'class' to make styling more consistent across many pages */
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 
 :root{
-    --common-padding: 0.7rem;
+    --my-common-padding: 0.7rem;
     --common-margin: 0.5rem;
     --common-radius: 12px;
 }
@@ -29,19 +29,19 @@
     align-items: center;
 }
 
-.padding{
-    padding: var(--common-padding);
+.my-padding{
+    padding: var(--my-common-padding);
 }
 
 .text-input{
-    padding: var(--common-padding);
+    padding: var(--my-common-padding);
     border: 1px black solid;
     border-radius: 0.8rem;
     margin: var(--common-margin);
 }
 
 .input-in{
-    padding: var(--common-padding);
+    padding: var(--my-common-padding);
     border-radius: var(--common-radius);
     border: 1px solid black;
     box-shadow: 4px 4px lightslategray;
@@ -49,7 +49,7 @@
 }
 
 .btn{
-    padding: var(--common-padding);
+    padding: var(--my-common-padding);
     font-size: large;
     color: black;
     margin: 0.3rem;

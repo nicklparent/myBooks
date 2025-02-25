@@ -17,7 +17,7 @@ export function Header() {
     const iconSize = 25;
 
     return (
-        <div className='header w-full between-center padding'>
+        <div className='header w-full between-center my-padding'>
             <div className='app-bar'>
                 {/* Mobile Menu Icon */}
                 <div className={`mobile-menu-icon ${isMenuOpen ? 'rotate' : ''}`} onClick={toggleMenu}>
