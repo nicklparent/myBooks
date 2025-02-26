@@ -9,8 +9,8 @@
 .idea/
 
 # Ignore bin and obj folders only inside backend/
-backend/bin/
-backend/obj/
+backend/bin/*
+backend/obj/*
 
 # Ignore global bin and obj folders (if applicable)
 bin/
