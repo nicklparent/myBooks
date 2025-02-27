@@ -7,6 +7,7 @@ CREATE TABLE `my_books`.`books` (
   `Author` VARCHAR(45) NULL,
   `Genre` VARCHAR(45) NULL,
   `PageCount` INT NULL,
+  `Description` TEXT NULL,
 PRIMARY KEY (`Id`));
 
 CREATE TABLE `my_books`.`users` (

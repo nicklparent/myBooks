@@ -1,4 +1,5 @@
 ﻿using backend.Data;
+using backend.Models;
 
 namespace backend.assets {
     public class DbUploads {
@@ -8,7 +9,7 @@ namespace backend.assets {
             this._dbconnection = _dbconnection;
         }
 
-        public void CSVToDB(string filepath) {
+        public void CSVToDBBook(string filepath) {
             if (!File.Exists(filepath)) {
                 throw new Exception("Error: file could not be opened");
             }
@@ -17,6 +18,7 @@ namespace backend.assets {
             using(StreamReader reader = new StreamReader(filepath)) {
                 string line;
                 bool headerLine = true;
+                List<Book> books = new List<Book>();
                 while ((line = reader.ReadLine()) != null) {
                     if (headerLine) {
                         headerLine = false;
@@ -24,6 +26,10 @@ namespace backend.assets {
                     }
 
                     string[] values = ParseCSVLine(line);
+
+                    books.Add(new Book {
+
+                    });
                 }
             }
             
