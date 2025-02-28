@@ -18,3 +18,12 @@ CREATE TABLE `my_books`.`users` (
   `LastName` VARCHAR(45) NULL,
   `Password` VARCHAR(100) NOT NULL,
 PRIMARY KEY (`Id`));
+
+CREATE TABLE `my_books`.`ratings` (
+  `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
+  `Rating` DECIMAL(10, 2) NOT NULL,
+  `UserId` INT NOT NULL,
+  `BookId` INT NOT NULL,
+  FOREIGN KEY (UserId) REFERENCES users(Id),
+  FOREIGN KEY (BookId) REFERENCES books(Id),
+PRIMARY KEY (`Id`))
