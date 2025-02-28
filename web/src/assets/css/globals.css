@@ -1,46 +1,45 @@
-/* CSS 'class' to make styling more consistent across many pages */
-/* @import "tailwindcss"; */
+/* Global Styles */
+@import "tailwindcss";
 
-:root{
+:root {
     --my-common-padding: 0.7rem;
     --common-margin: 0.5rem;
     --common-radius: 12px;
 }
-.header{
-    height: 4vh;
-}
-.w-full{
+
+.w-full {
     width: 100%;
 }
-.screen{
-    height: 100vh;
-    width: 100vw;
+
+.screen {
+    height: 100dvh;
+    width: 100dvw;
 }
 
-.center{
+.center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.between-center{
+.between-center {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.my-padding{
+.my-padding {
     padding: var(--my-common-padding);
 }
 
-.text-input{
+.text-input {
     padding: var(--my-common-padding);
-    border: 1px black solid;
+    border: 1px solid black;
     border-radius: 0.8rem;
     margin: var(--common-margin);
 }
 
-.input-in{
+.input-in {
     padding: var(--my-common-padding);
     border-radius: var(--common-radius);
     border: 1px solid black;
@@ -48,11 +47,22 @@
     background-color: whitesmoke;
 }
 
-.btn{
+.btn {
     padding: var(--my-common-padding);
     font-size: large;
     color: black;
     margin: 0.3rem;
-    border: 1px black solid;
+    border: 1px solid black;
     border-radius: var(--common-radius);
+}
+
+.title {
+    text-decoration: none;
+    color: black;
+    font-family: 'American Typewriter', serif;
+    font-size: x-large;
+}
+
+.profile-img {
+    margin-right: 1rem;
 }

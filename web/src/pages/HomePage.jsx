@@ -7,7 +7,6 @@ export function HomePage(){
 
     useEffect(() => {
         let intervalId;
-
         const fetchBooks = () => {
             fetch(`http://localhost:5053/book`)
                 .then(response => {
@@ -36,7 +35,7 @@ export function HomePage(){
     if (loading){
         
         return (
-            <div className='center'>
+            <div className='center h-full'>
                 <Loading />
             </div>);
     }

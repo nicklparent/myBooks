@@ -1,3 +1,9 @@
+:root{
+    --search-bar-height: 3rem;
+}
+.header{
+    background-color: #a09494;
+}
 
 .title {
     text-decoration: none;
@@ -29,10 +35,13 @@
     margin-right: 0;
     border-right: 0;
     border-radius: 0.8rem 0 0 0.8rem;
-    width: 7rem;
+    width: 10rem;
+    height: var(--search-bar-height);
 }
 
 .search-button {
+    display: flex;
+    align-items: center;
     padding: 0.6rem;
     margin: 0;
     border-radius: 0 0.8rem 0.8rem 0;
@@ -40,6 +49,8 @@
     background-color: black;
     color: aliceblue;
     cursor: pointer;
+    text-align: end;
+    height: var(--search-bar-height);
 }
 
 .search-button:hover {
@@ -79,7 +90,7 @@
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 5vh;
+        top: 10vh;
         left: 0;
         width: 100%;
         background-color: #a09494;
@@ -108,5 +119,11 @@
 
     .mobile-menu-icon {
         display: block;
+    }
+    .search > .text-input{
+        width: 5.4rem;
+    }
+    .search-button{
+        font-size: 0;
     }
 }

@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using backend.Models;
 using backend.Data;
+using System.Data;
 namespace backend.Controllers
 {
     [ApiController]
@@ -25,10 +26,12 @@ namespace backend.Controllers
                     while (reader.Read()) {
                         books.Add(new Book
                         {
-                            Id = reader.GetInt32("Id"),
-                            Title = reader.GetString("Title"),
-                            Author = reader.GetString("Author"),
-                            Genre = reader.GetString("Genre")
+                            Id = !reader.IsDBNull(reader.GetOrdinal("Id")) ? reader.GetInt32("Id") : 0,
+                            Title = !reader.IsDBNull(reader.GetOrdinal("Title")) ? reader.GetString("Title") : "Untitled",
+                            Author = !reader.IsDBNull(reader.GetOrdinal("Author")) ? reader.GetString("Author") : "Unknown Author",
+                            Genre = !reader.IsDBNull(reader.GetOrdinal("Genre")) ? reader.GetString("Genre") : "Unknown Genre",
+                            PageCount = !reader.IsDBNull(reader.GetOrdinal("PageCount")) ? reader.GetInt32("PageCount") : 0,
+                            Description = !reader.IsDBNull(reader.GetOrdinal("Description")) ? reader.GetString("Description") : "No Description available",
                         });
                     }
                 }
@@ -37,6 +40,7 @@ namespace backend.Controllers
 
             return books;
         }
+
 
         [HttpGet("{id}")]
         public IActionResult GetBookById(int id) {
@@ -52,6 +56,7 @@ namespace backend.Controllers
                             Title = reader.GetString("Title"),
                             Author = reader.GetString("Author"),
                             Genre = reader.GetString("Genre"),
+
                         };
                     }
                 }
