@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-using System.Collections.Generic;
 using backend.Models;
 using backend.Data;
-using System.Data;
 namespace backend.Controllers
 {
     [ApiController]

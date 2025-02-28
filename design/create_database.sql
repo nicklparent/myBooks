@@ -26,4 +26,4 @@ CREATE TABLE `my_books`.`ratings` (
   `BookId` INT NOT NULL,
   FOREIGN KEY (UserId) REFERENCES users(Id),
   FOREIGN KEY (BookId) REFERENCES books(Id),
-PRIMARY KEY (`Id`))
+PRIMARY KEY (`Id`));

@@ -14,3 +14,9 @@ VALUES
 ('Nicklparent', 'nicklparent@example.com', 'nick', 'parent', 'password2'),
 ('sampleuser', 'sampleuser@gmail.com', 'sample', 'user', 'password3');
 
+
+INSERT INTO ratings
+(Rating, UserId, BookId)
+VALUES
+(8.2, 1, 2),
+(9.1, 2, 1);
