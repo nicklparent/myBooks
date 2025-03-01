@@ -11,5 +11,7 @@ namespace backend.Models {
         public int UserId { get; set; }
         [NotNull]
         public int BookId { get; set; }
+        [AllowNull]
+        public string Review { get; set; }
     }
 }

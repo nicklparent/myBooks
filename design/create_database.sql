@@ -22,6 +22,7 @@ PRIMARY KEY (`Id`));
 CREATE TABLE `my_books`.`ratings` (
   `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `Rating` DECIMAL(10, 2) NOT NULL,
+  `Review` TEXT NULL,
   `UserId` INT NOT NULL,
   `BookId` INT NOT NULL,
   FOREIGN KEY (UserId) REFERENCES users(Id),
