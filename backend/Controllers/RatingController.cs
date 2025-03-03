@@ -27,12 +27,37 @@ namespace backend.Controllers
                         {
                             Id = reader.GetInt32("Id"),
                             RatingScore = reader.GetDouble("Rating"),
+                            Review = reader.
                             UserId = reader.GetInt32("UserId"),
                             BookId = reader.GetInt32("BookId"),
                         });
                     }
                 }
             }
+            return ratings;
+        }
+
+        [HttpGet("{BookId}")]
+        public IEnumerable<Rating> GetBookIdRating(int BookId) {
+            var ratings = new List<Rating>();
+
+            if (_dbconnection.IsConnect()) {
+                string query = "SELECT * FROM ratings WHERE BookId = @BookId";
+                using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
+                    cmd.Parameters.AddWithValue("@BookId", BookId);
+                    using (var reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            ratings.Add(new Rating
+                            {
+                                Id = reader.GetInt32("Id"),
+                                RatingScore = reader.GetInt32("Rating"),
+
+                            });
+                        }
+                    }
+                }
+            }
+
             return ratings;
         }
     }

@@ -46,16 +46,17 @@ namespace backend.Controllers
                 string query = "SELECT * FROM books WHERE Id = @id";
                 using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
                     cmd.Parameters.AddWithValue("@id", id);
-                    var reader = cmd.ExecuteReader();
-                    if (reader.Read()) {
-                        Book book = new Book
-                        {
-                            Id = reader.GetInt32("Id"),
-                            Title = reader.GetString("Title"),
-                            Author = reader.GetString("Author"),
-                            Genre = reader.GetString("Genre"),
+                    using (var reader = cmd.ExecuteReader()) {
+                        if (reader.Read()) {
+                            Book book = new Book
+                            {
+                                Id = reader.GetInt32("Id"),
+                                Title = reader.GetString("Title"),
+                                Author = reader.GetString("Author"),
+                                Genre = reader.GetString("Genre"),
 
-                        };
+                            };
+                        }
                     }
                 }
             }
