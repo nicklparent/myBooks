@@ -32,13 +32,14 @@ export function HomePage(){
     }, []);
 
 
-    if (loading){
-        
+    if (loading) {
         return (
-            <div className='center h-full'>
+            <div className="loader-box">
                 <Loading />
-            </div>);
+            </div>
+        );
     }
+    
 
     return(
         <div>

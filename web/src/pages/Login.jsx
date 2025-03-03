@@ -51,8 +51,10 @@ export function Login() {
                 {loginType === "login" ? (
                     // Login Side
                     <div className='login'>
-                        <h2>Welcome Back!</h2>
-                        <h3>Login</h3>
+                        <div className='login-header'>
+                            <h1 className='header-title'>Welcome Back!</h1>
+                            <h3 className='header-subtitle'>Login</h3>
+                        </div>
                         <div className='input-field'>
                             <label htmlFor="email-login">Email</label>
                             <input
@@ -76,8 +78,9 @@ export function Login() {
                                 onChange={e => setPassword(e.target.value)}
                             />
                         </div>
-
-                        <button onClick={loginHandler} className='sign-in btn'>Sign In</button>
+                        <div>
+                            <button onClick={loginHandler} className='sign-in-btn btn'>Sign In</button>
+                        </div>
                     </div>
                 ) : (
                     // Create account side

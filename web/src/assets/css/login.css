@@ -1,8 +1,9 @@
-:root{
-    --common-text-color: rgba(148, 113, 81, 0.842);  
+:root {
+    --common-text-color: rgba(49, 42, 35, 0.842);  
+    --my-common-padding: 0.7rem;
 }
 
-.signin-page{
+.signin-page {
     display: flex;
     flex-direction: row;
     border: 2px solid grey;
@@ -11,8 +12,7 @@
     background-color: #9f7431;
 }
 
-
-.input-field{
+.input-field {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -22,14 +22,39 @@
     padding: 0.2rem 0;
 }
 
-
-.middle-line{
+.middle-line {
     width: 1px;
     margin: 0 1rem;
     background-color: black;
 }
 
-.sign-in{
+.sign-in-btn {
     background-color: teal;
-    width: 100%;
+    padding: var(--my-common-padding);
+}
+
+.login-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-title {
+    font-size: 2rem;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.header-subtitle {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.toggle-btn {
+    margin-top: 1rem;
+    border: none;
+    color: var(--common-text-color);
+    cursor: pointer;
+    text-decoration: underline;
 }

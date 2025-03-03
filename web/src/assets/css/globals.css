@@ -66,3 +66,15 @@
 .profile-img {
     margin-right: 1rem;
 }
+
+.loader-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh; 
+    width: 100%; 
+}
+
+.loader-box > h1 {
+    font-size: x-large;
+}
