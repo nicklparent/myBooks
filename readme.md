@@ -40,8 +40,8 @@ _{
 
 **Step 4:** Navigate to backend/ and run **_dotnet run_**
 
-**Step 5:** Navigate to frontend/ and run **_npm i_**
+**Step 5:** Navigate to web/ and run **_npm i_**
 
-**Step 6:** Navigate to frontend/ and run **_npm start_**
+**Step 6:** Navigate to web/ and run **_npm start_**
 
 **_Enjoy using my app!_**
