@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:mobile/API/BookController.dart';
 import 'package:mobile/sections/Footer.dart';
@@ -13,43 +11,51 @@ class HomePage extends StatefulWidget{
 
 
 class _HomePageState extends State<HomePage>{
-  List<dynamic> books = [];
+  String books = '';
+  bool isLoading = true;
+  String errorMessage = '';
 
   Future<void> updateBooks() async{
     try {
       BookController bookController = new BookController();
       var res = await bookController.getAll();
 
-      books[0] = res.body;
+      setState(() {
+        books = res.body;
+        isLoading = false;
+      });
     } catch (e) {
-      books = [];
+      setState(() {
+        errorMessage = 'Failed to load books';
+        isLoading = false;
+      });
     }
   }
   @override
   void initState() {
-    updateBooks();
     super.initState();
+    updateBooks();
   }
 
   @override
   Widget build(BuildContext context) {
 
-    return(
-        Scaffold(
-          body: Column(
-            children: [
-              ListView.builder(
-                  itemCount: books.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-
-                    );
-                  }
-              )
-            ],
-          ),
-          bottomNavigationBar: Footer(),
-        )
+    return Scaffold(
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : errorMessage.isNotEmpty
+          ? Center(child: Text(errorMessage))
+          : books.isEmpty
+          ? const Center(child: Text("No Books available"))
+          : ListView.builder(
+        itemCount: books.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(books[index].toString()),
+          );
+        },
+      ),
+      bottomNavigationBar: const Footer(),
     );
   }
 }

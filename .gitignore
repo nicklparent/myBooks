@@ -7,6 +7,8 @@
 # Ignore IDE files
 .vs/
 .idea/
+.vscode/
+*.code-workspace
 
 # Ignore bin and obj folders only inside backend/
 *backend/bin/**
@@ -19,7 +21,6 @@ obj/
 # Ignore appsettings files inside backend
 backend/appsettings.json
 backend/appsettings.Development.json
-
 
 # Ignore Mobile extras
 # Miscellaneous
@@ -56,3 +57,40 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Flutter-specific
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.metadata
+
+# iOS-specific
+ios/.generated/
+ios/Flutter/App.framework/
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/Flutter/flutter_export_environment.sh
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+
+# Android-specific
+android/.gradle/
+android/.idea/
+android/app/build/
+android/build/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/.settings/
+
+# Miscellaneous
+*.lock
+*.swp
+*.swo
+*.tmp
+*.patch

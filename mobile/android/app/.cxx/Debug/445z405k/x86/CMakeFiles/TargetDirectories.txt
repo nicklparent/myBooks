@@ -1,0 +1,2 @@
+C:/Users/Nickl/programming/myBooks/mobile/android/app/.cxx/Debug/445z405k/x86/CMakeFiles/edit_cache.dir
+C:/Users/Nickl/programming/myBooks/mobile/android/app/.cxx/Debug/445z405k/x86/CMakeFiles/rebuild_cache.dir

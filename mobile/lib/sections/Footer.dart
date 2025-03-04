@@ -9,40 +9,41 @@ class Footer extends StatelessWidget{
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+
           // Home Button
-          ElevatedButton(
-            child: Icon(Icons.home_filled),
+          IconButton(
+            icon: Icon(Icons.home_filled),
             onPressed: (){
 
             },
           ),
 
           // Collection Button
-          ElevatedButton(
-            child: Icon(Icons.shelves),
+          IconButton(
+            icon: Icon(Icons.shelves),
             onPressed: (){
 
             },
           ),
 
           // Explore Button
-          ElevatedButton(
-            child: Icon(Icons.explore_sharp),
+          IconButton(
+            icon: Icon(Icons.explore_sharp),
             onPressed: (){
 
             },
           ),
 
           // Social button
-          ElevatedButton(
-            child: Icon(Icons.people),
+          IconButton(
+            icon: Icon(Icons.people),
             onPressed: (){
 
             },
           ),
           // Profile Button
-          ElevatedButton(
-            child: Icon(Icons.person),
+          IconButton(
+            icon: Icon(Icons.person),
             onPressed: (){
 
             },
