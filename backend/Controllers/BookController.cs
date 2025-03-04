@@ -57,6 +57,7 @@ namespace backend.Controllers
                                 PageCount = !reader.IsDBNull(reader.GetOrdinal("PageCount")) ? reader.GetInt32("PageCount") : 0,
                                 Description = !reader.IsDBNull(reader.GetOrdinal("Description")) ? reader.GetString("Description") : "No Description available",
                             };
+                            return Ok(book);
                         }
                     }
                 }
