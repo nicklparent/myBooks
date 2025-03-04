@@ -25,11 +25,11 @@ namespace backend.Controllers
                     while (reader.Read()) {
                         ratings.Add(new Rating
                         {
-                            Id = reader.GetInt32("Id"),
-                            RatingScore = reader.GetDouble("Rating"),
-                            Review = reader.
-                            UserId = reader.GetInt32("UserId"),
-                            BookId = reader.GetInt32("BookId"),
+                            Id = !reader.IsDBNull(reader.GetOrdinal("Id")) ? reader.GetInt32("Id") : 0,
+                            RatingScore = !reader.IsDBNull(reader.GetOrdinal("Rating")) ? reader.GetDouble("Rating") : 0.0,
+                            Review = !reader.IsDBNull(reader.GetOrdinal("Review")) ? reader.GetString("Review") : "No Review Available",
+                            UserId = !reader.IsDBNull(reader.GetOrdinal("UserId")) ? reader.GetInt32("UserId") : 0,
+                            BookId = !reader.IsDBNull(reader.GetOrdinal("BookId")) ? reader.GetInt32("BookId") : 0,
                         });
                     }
                 }
