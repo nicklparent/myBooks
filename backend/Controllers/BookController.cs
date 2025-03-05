@@ -30,6 +30,7 @@ namespace backend.Controllers
                             Genre = !reader.IsDBNull(reader.GetOrdinal("Genre")) ? reader.GetString("Genre") : "Unknown Genre",
                             PageCount = !reader.IsDBNull(reader.GetOrdinal("PageCount")) ? reader.GetInt32("PageCount") : 0,
                             Description = !reader.IsDBNull(reader.GetOrdinal("Description")) ? reader.GetString("Description") : "No Description available",
+                            CoverImageUrl = !reader.IsDBNull(reader.GetOrdinal("CoverImageUrl")) ? reader.GetString("CoverImageUrl") : "No Image Available",
                         });
                     }
                 }

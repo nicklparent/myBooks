@@ -25,7 +25,7 @@ CREATE TABLE `my_books`.`currently_reading` (
   `UserId` INT NOT NULL,
   `BookId` INT NOT NULL,
   FOREIGN KEY (UserId) REFERENCES users(Id),
-  FOREIGN KEY (BookId) REFERENCES books(Id).
+  FOREIGN KEY (BookId) REFERENCES books(Id),
 PRIMARY KEY (`Id`));
 
 CREATE TABLE `my_books`.`want_to_read` (
@@ -33,7 +33,7 @@ CREATE TABLE `my_books`.`want_to_read` (
   `UserId` INT NOT NULL,
   `BookId` INT NOT NULL,
   FOREIGN KEY (UserId) REFERENCES users(Id),
-  FOREIGN KEY (BookId) REFERENCES books(Id).
+  FOREIGN KEY (BookId) REFERENCES books(Id),
 PRIMARY KEY (`Id`));
 
 CREATE TABLE `my_books`.`completed_read` (
@@ -41,7 +41,7 @@ CREATE TABLE `my_books`.`completed_read` (
   `UserId` INT NOT NULL,
   `BookId` INT NOT NULL,
   FOREIGN KEY (UserId) REFERENCES users(Id),
-  FOREIGN KEY (BookId) REFERENCES books(Id).
+  FOREIGN KEY (BookId) REFERENCES books(Id),
 PRIMARY KEY (`Id`));
 
 CREATE TABLE `my_books`.`ratings` (
@@ -56,6 +56,6 @@ PRIMARY KEY (`Id`));
 
 CREATE TABLE `my_books`.`purchase_links` (
   `BookId` INT NOT NULL,
-  `AmazonUrl` VARCHAR(255),
-  `IndigoUrl` VARCHAR(255),
-FOREIGN KEY (BookId) REFERENCES book(Id));
+  `AmazonUrl` TEXT,
+  `IndigoUrl` TEXT,
+FOREIGN KEY (BookId) REFERENCES books(Id));

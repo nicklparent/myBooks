@@ -13,11 +13,12 @@ class BookController extends Controller {
     }
 
     Uri url = Uri.parse('$backendHost/book');
-
     try {
       final response = await http.get(url);
+      print('response: $response');
       return response;
     } catch (e) {
+      print('response failed');
       throw Exception("Failed to fetch books: $e");
     }
   }
