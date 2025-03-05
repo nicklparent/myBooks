@@ -8,6 +8,7 @@ CREATE TABLE `my_books`.`books` (
   `Genre` VARCHAR(45) NULL,
   `PageCount` INT NULL,
   `Description` TEXT NULL,
+  `CoverImageUrl` VARCHAR(255) NULL,
 PRIMARY KEY (`Id`));
 
 CREATE TABLE `my_books`.`users` (
@@ -17,6 +18,30 @@ CREATE TABLE `my_books`.`users` (
   `FirstName` VARCHAR(45) NULL,
   `LastName` VARCHAR(45) NULL,
   `Password` VARCHAR(100) NOT NULL,
+PRIMARY KEY (`Id`));
+
+CREATE TABLE `my_books`.`currently_reading` (
+  `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
+  `UserId` INT NOT NULL,
+  `BookId` INT NOT NULL,
+  FOREIGN KEY (UserId) REFERENCES users(Id),
+  FOREIGN KEY (BookId) REFERENCES books(Id).
+PRIMARY KEY (`Id`));
+
+CREATE TABLE `my_books`.`want_to_read` (
+  `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
+  `UserId` INT NOT NULL,
+  `BookId` INT NOT NULL,
+  FOREIGN KEY (UserId) REFERENCES users(Id),
+  FOREIGN KEY (BookId) REFERENCES books(Id).
+PRIMARY KEY (`Id`));
+
+CREATE TABLE `my_books`.`completed_read` (
+  `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
+  `UserId` INT NOT NULL,
+  `BookId` INT NOT NULL,
+  FOREIGN KEY (UserId) REFERENCES users(Id),
+  FOREIGN KEY (BookId) REFERENCES books(Id).
 PRIMARY KEY (`Id`));
 
 CREATE TABLE `my_books`.`ratings` (
@@ -30,7 +55,7 @@ CREATE TABLE `my_books`.`ratings` (
 PRIMARY KEY (`Id`));
 
 CREATE TABLE `my_books`.`purchase_links` (
-  `IndigoUrl` VARCHAR(255),
-  `AmazonUrl` VARCHAR(255),
   `BookId` INT NOT NULL,
+  `AmazonUrl` VARCHAR(255),
+  `IndigoUrl` VARCHAR(255),
 FOREIGN KEY (BookId) REFERENCES book(Id));
