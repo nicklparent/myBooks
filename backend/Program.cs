@@ -8,6 +8,10 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<AppDbContext>(provider =>
     new AppDbContext(provider.GetRequiredService<IConfiguration>()));
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5053);
+});
 
 var app = builder.Build();
 
