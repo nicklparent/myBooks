@@ -21,6 +21,7 @@ obj/
 # Ignore appsettings files inside backend
 backend/appsettings.json
 backend/appsettings.Development.json
+backend/Properties/launchsettings.json
 
 # Ignore Mobile extras
 # Miscellaneous
