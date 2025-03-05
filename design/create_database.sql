@@ -28,3 +28,9 @@ CREATE TABLE `my_books`.`ratings` (
   FOREIGN KEY (UserId) REFERENCES users(Id),
   FOREIGN KEY (BookId) REFERENCES books(Id),
 PRIMARY KEY (`Id`));
+
+CREATE TABLE `my_books`.`purchase_links` (
+  `IndigoUrl` VARCHAR(255),
+  `AmazonUrl` VARCHAR(255),
+  `BookId` INT NOT NULL,
+FOREIGN KEY (BookId) REFERENCES book(Id));

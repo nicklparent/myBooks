@@ -17,14 +17,22 @@ class _HomePageState extends State<HomePage>{
 
   Future<void> updateBooks() async{
     try {
-      BookController bookController = new BookController();
+      BookController bookController = BookController();
       var res = await bookController.getAll();
-
+      print('res: $res');
+      if (res.statusCode != 200) {
+        setState(() {
+          errorMessage = 'Backend error';
+          isLoading = false;
+        });
+        return;
+      }
       setState(() {
         books = res.body;
         isLoading = false;
       });
     } catch (e) {
+      print('error');
       setState(() {
         errorMessage = 'Failed to load books';
         isLoading = false;
@@ -41,6 +49,9 @@ class _HomePageState extends State<HomePage>{
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        title: TextButton(onPressed: updateBooks, child: Text("Refresh")),
+      ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : errorMessage.isNotEmpty
@@ -48,10 +59,11 @@ class _HomePageState extends State<HomePage>{
           : books.isEmpty
           ? const Center(child: Text("No Books available"))
           : ListView.builder(
-        itemCount: books.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(books[index].toString()),
+            itemCount: books.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(books[index].toString()
+              ),
           );
         },
       ),
