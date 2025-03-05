@@ -89,6 +89,7 @@ android/gradlew
 android/gradlew.bat
 android/local.properties
 android/.settings/
+android/app/.cxx/debug/*
 
 # Miscellaneous
 *.lock
