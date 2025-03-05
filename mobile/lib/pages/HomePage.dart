@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mobile/API/BookController.dart';
 import 'package:mobile/sections/Footer.dart';
@@ -11,7 +13,7 @@ class HomePage extends StatefulWidget{
 
 
 class _HomePageState extends State<HomePage>{
-  String books = '';
+  var books = [];
   bool isLoading = true;
   String errorMessage = '';
 
@@ -19,7 +21,6 @@ class _HomePageState extends State<HomePage>{
     try {
       BookController bookController = BookController();
       var res = await bookController.getAll();
-      print('res: $res');
       if (res.statusCode != 200) {
         setState(() {
           errorMessage = 'Backend error';
@@ -28,11 +29,10 @@ class _HomePageState extends State<HomePage>{
         return;
       }
       setState(() {
-        books = res.body;
+        books = jsonDecode(res.body);
         isLoading = false;
       });
     } catch (e) {
-      print('error');
       setState(() {
         errorMessage = 'Failed to load books';
         isLoading = false;
@@ -52,21 +52,39 @@ class _HomePageState extends State<HomePage>{
       appBar: AppBar(
         title: TextButton(onPressed: updateBooks, child: Text("Refresh")),
       ),
-      body: isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : errorMessage.isNotEmpty
-          ? Center(child: Text(errorMessage))
-          : books.isEmpty
-          ? const Center(child: Text("No Books available"))
-          : ListView.builder(
-            itemCount: books.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(books[index].toString()
-              ),
-          );
-        },
-      ),
+      //Loading screen during fetch
+      body: isLoading ? const Center(child: CircularProgressIndicator())
+        //Show any error message given
+        : errorMessage.isNotEmpty ? Center(child: Text(errorMessage))
+        //Handle if there is no error message but books still could not load
+        : books.isEmpty ? const Center(child: Text("No Books available"))
+
+        //Handle succesful fetch
+        : Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: books.length,
+                  itemBuilder: (context, index){
+                    var book = books[index];
+                    return Card(
+                      margin: const EdgeInsets.all(10.0),
+                      child: ListTile(
+                        title: Text(book['title'] ?? 'No Title Available'),
+                        subtitle: Text(book['author'] ?? 'No Author Available'),
+                        trailing: Text(book['description'] ?? 'No Description Available'),
+                        onTap: () {
+
+                        },
+                      ),
+                    );
+                  }
+                ),
+              )
+
+            ],
+          ),
       bottomNavigationBar: const Footer(),
     );
   }
