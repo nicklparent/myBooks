@@ -10,6 +10,12 @@ class BookLayout{
         return Card(
           margin: const EdgeInsets.all(10.0),
           child: ListTile(
+            leading: Image.network(
+              book['coverimageurl'] ?? '',
+              errorBuilder: (context, error, stacktrace) {
+                return Image.asset('assets/book-default.png');
+              },
+            ),
             title: Text(book['title'] ?? 'No Title Available'),
             subtitle: Text(book['author'] ?? 'No Author Available'),
             trailing: Text(book['description'] ?? 'No Description Available'),
