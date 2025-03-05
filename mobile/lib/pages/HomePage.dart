@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mobile/API/BookController.dart';
 import 'package:mobile/sections/Footer.dart';
-
+import 'package:mobile/sections/BookLayout.dart';
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
 
@@ -61,30 +61,13 @@ class _HomePageState extends State<HomePage>{
 
         //Handle succesful fetch
         : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: books.length,
-                  itemBuilder: (context, index){
-                    var book = books[index];
-                    return Card(
-                      margin: const EdgeInsets.all(10.0),
-                      child: ListTile(
-                        title: Text(book['title'] ?? 'No Title Available'),
-                        subtitle: Text(book['author'] ?? 'No Author Available'),
-                        trailing: Text(book['description'] ?? 'No Description Available'),
-                        onTap: () {
-
-                        },
-                      ),
-                    );
-                  }
-                ),
-              )
-
-            ],
-          ),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: BookLayout().ListAllBooks(books),
+            ),
+          ],
+        ),
       bottomNavigationBar: const Footer(),
     );
   }
