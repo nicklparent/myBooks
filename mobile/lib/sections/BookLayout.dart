@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BookLayout{
@@ -10,9 +9,13 @@ class BookLayout{
         return Card(
           margin: const EdgeInsets.all(10.0),
           child: ListTile(
-            leading: Image.network(
-              book['coverimageurl'] ?? '',
-              errorBuilder: (context, error, stacktrace) {
+            leading: FadeInImage.assetNetwork(
+              placeholder: 'assets/book-default.png', // Placeholder image
+              image: book['coverImageUrl'] ?? '',
+              width: 50,
+              height: 80,
+              fit: BoxFit.cover,
+              imageErrorBuilder: (context, error, stacktrace) {
                 return Image.asset('assets/book-default.png');
               },
             ),

@@ -3,9 +3,9 @@ USE my_books;
 INSERT INTO books 
 (Title, Author, Genre, PageCount, CoverImageUrl)
 VALUES 
-('Lord Of The Rings', 'J.R.R.Tolkien', 'Fantasy', 1100, 'https://dynamic.indigoimages.ca/v1/books/books/0261102354/1.jpg'),
+('Lord Of The Rings', 'J.R.R.Tolkien', 'Fantasy', 1100, 'https://covers.openlibrary.org/b/ISBN/0261102354-M.jpg'),
 ('Harry Potter', 'J.K. Rowling', 'Fantasy', 2000, NULL),
-('Meditations', 'Marcus Aeurlious', 'Classics', 250, 'https://dynamic.indigoimages.ca/v1/books/books/1548249254/1.jpg');
+('Meditations', 'Marcus Aeurlious', 'Classics', 250, 'https://covers.openlibrary.org/b/ISBN/9780140449334-M.jpg');
 
 INSERT INTO users
 (Username, Email, FirstName, LastName, Password)
