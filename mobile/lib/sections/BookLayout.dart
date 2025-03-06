@@ -30,4 +30,10 @@ class BookLayout{
       }
     );
   }
+
+  Widget MostRecentlyRead(List<dynamic> book){
+    return Container(
+
+    );
+  }
 }
