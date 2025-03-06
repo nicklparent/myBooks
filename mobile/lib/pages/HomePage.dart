@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/API/BookController.dart';
 import 'package:mobile/sections/Footer.dart';
 import 'package:mobile/sections/BookLayout.dart';
+import 'package:mobile/sections/Header.dart';
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
 
@@ -49,9 +50,6 @@ class _HomePageState extends State<HomePage>{
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        title: TextButton(onPressed: updateBooks, child: Text("Refresh")),
-      ),
       //Loading screen during fetch
       body: isLoading ? const Center(child: CircularProgressIndicator())
         //Show any error message given
@@ -61,8 +59,10 @@ class _HomePageState extends State<HomePage>{
 
         //Handle succesful fetch
         : Column(
+          spacing: 4.0,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Header(),
             Expanded(
               child: BookLayout().ListAllBooks(books),
             ),
