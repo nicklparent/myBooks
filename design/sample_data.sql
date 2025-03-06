@@ -28,10 +28,10 @@ VALUES
 (1, 'https://www.indigo.ca/en-ca/the-fellowship-of-the-ring/9780261102354.html', 'https://www.amazon.ca/Fellowship-Ring-Lord-Rings-Book/dp/0261102354?crid=1HSEVXJUYKAF8&dib=eyJ2IjoiMSJ9.lJ983QYtrD2V3iZOOZ3Q9CL9dPxt8DN_OM8OOLDDZYmd9Is3ICMNFseOriLlv7ss0eOAcClNduyDLqJXLxvr9yS7G1IG5UawD3MM0lSe--D9KuLdgtJo6AVAKoc2DH84ii8SoHO7p07KWxZXxugoNXDNguf_Fc7Yk1axwlCV_Ls2lUeYnleh5e63F3jZjNtg8fphSAA-GfjGe4oXBQIe4I07tUcPNaqutNgUJY3phDy7_7RHy8gQUi0ftZ7E7eN21dg8n2PkV92J0NOFstu_h7lX1hIFWBdwz2pEUkf98a9NPLfjxaWwCFeBmEAwq9LVHb7d9s9278y2kD4ZGm0fdiHGQdMkRI4AMBNjm5GJieI5o9vwcEsjQvCSy2wZS-6wsfA8Aw76LrYxZ9o6jVi9DLZscaKkGZODkRk2dwskoMVOa4-v4AAWLWw78fzxcgjC.Ma6brlHusK68uX1vJbH_sBw9K4Q8Fgnd8iHDNuV1yJU&dib_tag=se&keywords=lord+of+the+rings&qid=1741189952&sprefix=lord+of+%2Caps%2C168&sr=8-9');
 
 INSERT INTO currently_reading
-(UserId, BookId)
+(UserId, BookId, CurrentPage)
 VALUES
-(1, 1),
-(2, 1);
+(1, 1, 100),
+(2, 1, 200);
 
 INSERT INTO want_to_read
 (UserId, BookId)

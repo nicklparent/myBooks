@@ -24,6 +24,8 @@ CREATE TABLE `my_books`.`currently_reading` (
   `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `UserId` INT NOT NULL,
   `BookId` INT NOT NULL,
+  `CurrentPage` INT DEFAULT 0,
+  `LastRead` DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (UserId) REFERENCES users(Id),
   FOREIGN KEY (BookId) REFERENCES books(Id),
 PRIMARY KEY (`Id`));
