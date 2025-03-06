@@ -2,8 +2,7 @@
 using MySql.Data.MySqlClient;
 using backend.Models;
 using backend.Data;
-namespace backend.Controllers
-{
+namespace backend.Controllers {
     [ApiController]
     [Route("[controller]")]
     public class BookController : Controller {
@@ -55,7 +54,7 @@ namespace backend.Controllers
                     }
                 }
             }
-            return StatusCode(500, new { message = "Could not find book"});
+            return StatusCode(500, new { message = "Could not find book" });
         }
 
         ///<summary>
