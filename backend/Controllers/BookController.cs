@@ -22,6 +22,7 @@ namespace backend.Controllers
                 using (var cmd = new MySqlCommand(query, _dbconnection.Connection))
                 using (var reader = cmd.ExecuteReader()) {
                     while (reader.Read()) {
+                        ///Return from the database
                         books.Add(new Book
                         {
                             Id = !reader.IsDBNull(reader.GetOrdinal("Id")) ? reader.GetInt32("Id") : 0,

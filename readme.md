@@ -17,6 +17,7 @@ I chose it nonetheless so that i could ensure smooth readability and good reusab
 I used React since I was already familiar and having web up before independent apps ensured all platforms could be tested and functional.
 ***
 ## Getting Setup:
+**Make Sure Flutter, Npm, and .NET are installed**
 
 **Step 1:** Run _git clone https://github.com/nicklparent/myBooks.git_
 
