@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage>{
           children: [
             Header(),
             Expanded(
-              child: BookLayout().ListAllBooks(books),
+              child: BookLayout().ListAllBooks(books, context),
             ),
           ],
         ),

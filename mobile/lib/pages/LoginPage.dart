@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/pages/HomePage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -70,6 +71,15 @@ class _LoginPageState extends State<LoginPage> {
                   // Add login logic here
                 },
                 child: const Text('Login'),
+              ),
+              const SizedBox(height: 20,),
+              ElevatedButton(
+                child: Text("Continue Without Logging in"),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const HomePage())
+                  );
+                }
               ),
             ],
           ),

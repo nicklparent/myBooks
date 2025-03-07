@@ -3,21 +3,22 @@ import 'Controller.dart';
 import 'package:http/http.dart' as http;
 
 class BookController extends Controller {
+  final backendHost = dotenv.env['BACKEND_HOST'];
+
   @override
   Future<http.Response> getAll() async {
-
-    final backendHost = dotenv.env['BACKEND_HOST'];
-
     if (backendHost == null) {
-      throw Exception("Backend Host could not be found in environment variables.");
+      throw Exception("Could not connect");
     }
-
     Uri url = Uri.parse('$backendHost/book');
-    try {
-      final response = await http.get(url);
-      return response;
-    } catch (e) {
-      throw Exception("Failed to fetch books: $e");
+    return get(url);
+  }
+
+  Future<http.Response> getMostRecentBook(int userId) async{
+    if (backendHost == null) {
+      throw Exception("Could not connect");
     }
+    Uri url = Uri.parse('$backendHost/book/most-recent/$userId');
+    return get(url);
   }
 }

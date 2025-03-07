@@ -41,40 +41,44 @@ class _HeaderState extends State<Header> {
                 //Redirect to home page same as footer
               },
             ),
-            SizedBox(
-              height: 40.0,
-              width: 200.0,
-              child: SearchAnchor(
-                builder: (context, SearchController controller) {
-                  return SearchBar(
-                    controller: controller,
-                    padding: const WidgetStatePropertyAll<EdgeInsets>(
-                        EdgeInsets.symmetric(horizontal: 10.0)
-                    ),
-                    onTap: () {
-                      controller.openView();
-                    },
-                    onChanged: (_) {
-                      controller.openView();
-                    },
-                    leading: Icon(Icons.search),
-                  );
-                },
-                //TODO
-                //Make Actually pull recommended books and users
-                //currently like this to make compiler happy
-                suggestionsBuilder: (context, SearchController controller){
-                  return List<ListTile>.generate(5, (int index){
-                    final String item = "item $index";
-                    return ListTile(title: Text(item),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              child: SizedBox(
+                height: 40.0,
+                width: 200.0,
+                child: SearchAnchor(
+
+                  builder: (context, SearchController controller) {
+                    return SearchBar(
+                      controller: controller,
+                      padding: const WidgetStatePropertyAll<EdgeInsets>(
+                          EdgeInsets.symmetric(horizontal: 10.0)
+                      ),
                       onTap: () {
-                        setState(() {
-                          controller.closeView(item);
-                        });
+                        controller.openView();
                       },
+                      onChanged: (_) {
+                        controller.openView();
+                      },
+                      leading: Icon(Icons.search),
                     );
-                  });
-                },
+                  },
+                  //TODO
+                  //Make Actually pull recommended books and users
+                  //currently like this to make compiler happy
+                  suggestionsBuilder: (context, SearchController controller){
+                    return List<ListTile>.generate(5, (int index){
+                      final String item = "item $index";
+                      return ListTile(title: Text(item),
+                        onTap: () {
+                          setState(() {
+                            controller.closeView(item);
+                          });
+                        },
+                      );
+                    });
+                  },
+                ),
               ),
             ),
           ],
