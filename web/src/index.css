@@ -1,1 +1,14 @@
 @import 'tailwindcss';
+
+:root{
+    --common-padding: 0.5rem;
+    --common-margin: 0.5rem;
+}
+
+.p-common{
+    padding: var(--common-padding);
+}
+
+.m-common{
+    margin: var(--common-margin);
+}
