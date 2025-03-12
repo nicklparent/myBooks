@@ -97,5 +97,6 @@ namespace backend.Controllers
             }
             return StatusCode(500, new { message = "Could not connect to data" });
         }
+ 
     }
 }

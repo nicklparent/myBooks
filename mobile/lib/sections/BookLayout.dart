@@ -60,6 +60,7 @@ class BookLayout {
                 ),
               ),
               onTap: () {
+                //TODO
                 // Handle book tap action
               },
             ),
@@ -69,13 +70,35 @@ class BookLayout {
     );
   }
 
-  Widget MostRecentlyRead(List<dynamic> book, BuildContext context) {
+  Widget MostRecentlyRead(Map<String, dynamic> book, BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      height: screenHeight * 0.3,
+      height: screenHeight * 0.25,
       margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all<Color>(Color(0x9f743100)),
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              side: BorderSide(color: Colors.black),
+            ),
+          ),
+        ),
+        onPressed: () {
+          // TODO: Add functionality
+        },
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

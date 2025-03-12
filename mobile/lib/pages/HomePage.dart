@@ -15,13 +15,15 @@ class HomePage extends AppPage {
 }
 
 class _HomePageState extends AppPageState<HomePage> {
-  List books = [];
+  List<dynamic> books = [];
+  dynamic recentBook;
   bool isLoading = true;
   String errorMessage = '';
 
   @override
   Future<void> initialize() async {
     await updateBooks();
+    await loadMostRecentBook();
   }
 
   Future<void> updateBooks() async {
@@ -47,11 +49,28 @@ class _HomePageState extends AppPageState<HomePage> {
         });
       }
     }
+  }
 
+  Future<void> loadMostRecentBook() async{
+    try {
+      var res = await BookController().getMostRecentBook(userId ?? 1);
+      if (res.statusCode == 200) {
+        var book = jsonDecode(res.body);
+        print(book);
+        setState(() {
+          recentBook = book[0];
+        });
+      } else {
+        throw Exception("Could not load recent book");
+      }
+    } catch (e) {
+      recentBook = [];
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -63,6 +82,7 @@ class _HomePageState extends AppPageState<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Header(),
+          BookLayout().MostRecentlyRead(recentBook, context),
           Expanded(child: BookLayout().ListAllBooks(books, context)),
         ],
       ),
