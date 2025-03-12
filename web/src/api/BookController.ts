@@ -1,7 +1,7 @@
 const backendHost = import.meta.env.VITE_BACKEND_HOST;
 
 
-export interface Book{
+export type Book = {
     id: number;
     title: string;
     author: string;

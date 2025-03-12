@@ -1,11 +1,11 @@
 const backendHost = import.meta.env.VITE_BACKEND_HOST;
 
-interface Preferences {
+type Preferences = {
   theme: string;
   filter: boolean;
 }
 
-interface User{
+type User = {
     id: number;
     username: string;
     email: string;
