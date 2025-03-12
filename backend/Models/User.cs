@@ -16,7 +16,7 @@ namespace backend.Models {
         [Required]
         public string UserName { get; set; }
 
-        public User ReaderToUser(MySqlDataReader reader) {
+        public static User ReaderToUser(MySqlDataReader reader) {
             return new User
             {
                 Id = !reader.IsDBNull(reader.GetOrdinal("Id")) ? reader.GetInt32("Id") : 0,

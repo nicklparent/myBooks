@@ -76,12 +76,13 @@ namespace backend.Controllers
                     cmd.Parameters.AddWithValue("@password", password);
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
-                            User user = User.ReaderToUser(reader);
+                            return Models.User.ReaderToUser(reader);
                         }
                     }
                 }
             }
 
+            return null;
         }
     }
 }
