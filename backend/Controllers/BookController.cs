@@ -21,7 +21,7 @@ namespace backend.Controllers {
                 using (var cmd = new MySqlCommand(query, _dbconnection.Connection))
                 using (var reader = cmd.ExecuteReader()) {
                     while (reader.Read()) {
-                        books.Add(Book.ReaderToBook(reader));
+                        books.Add(BookService.ReaderToBook(reader));
                     }
                 }
                 _dbconnection.CloseConnection();
@@ -39,7 +39,7 @@ namespace backend.Controllers {
                     cmd.Parameters.AddWithValue("@id", id);
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
-                            Book book = Book.ReaderToBook(reader);
+                            Book book = BookService.ReaderToBook(reader);
                             return Ok(book);
                         }
                     }
@@ -68,7 +68,7 @@ namespace backend.Controllers {
                     cmd.Parameters.AddWithValue("@id", userId);
                     using (var reader = cmd.ExecuteReader()) {
                         while (reader.Read()) {
-                            books.Add(Book.ReaderToBook(reader));
+                            books.Add(BookService.ReaderToBook(reader));
                         }
                     }
                 }

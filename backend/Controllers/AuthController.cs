@@ -1,5 +1,6 @@
 ﻿using backend.Data;
 using backend.Models;
+using backend.services;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 
@@ -26,14 +27,9 @@ namespace backend.Controllers
 
             string email = request.Email;
             string password = request.Password;
-            
-            if (_dbconnection.IsConnect()) {
-                string query = "SELECT * FROM users WHERE email = @email AND password + @password";
-                using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@password", password);
-                }
-            }
+            UserService userService = new UserService(_dbconnection);
+
+            User user = userService.GetUserByEmailAndPassword(email, password);
 
 
             return StatusCode(500, "Something went wrong");
