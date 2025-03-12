@@ -67,22 +67,5 @@ namespace backend.Controllers
             }
             return StatusCode(500, new { message = "Could not connect to data" });
         }
-        
-        public User GetUserByEmailAndPassword(string email, string password) {
-            if (_dbconnection.IsConnect()) {
-                string query = "SELECT * FROM users WHERE email = @email AND password + @password";
-                using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@password", password);
-                    using (var reader = cmd.ExecuteReader()) {
-                        if (reader.Read()) {
-                            return Models.User.ReaderToUser(reader);
-                        }
-                    }
-                }
-            }
-
-            return null;
-        }
     }
 }
