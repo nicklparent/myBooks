@@ -50,3 +50,12 @@ export async function getUser(id: number): Promise<User | {message: string, erro
         }
     }
 }
+
+export function isLoggedIn(): boolean{
+  const token = localStorage.getItem("authToken");
+
+  if (token){
+    return true;
+  }
+  return false;
+}

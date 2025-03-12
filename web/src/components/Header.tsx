@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { isLoggedIn } from "../api/UserController";
 
 
 const Header: React.FC = () => {
+
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isLoggedIn()){
+      setLoggedIn(true);
+    }
+    
+  }, []);
   return (
     <div className="grid grid-cols-7 grid-rows-1 gap-0">
       {/* logo & image */}
@@ -27,12 +37,20 @@ const Header: React.FC = () => {
           <Link to="/social" className="p-common">Social</Link>
         </div>
       </div>
-      <div className="col-span-1 row-span-1">
+      <div className="col-span-1 row-span-1" style={{display: loggedIn ? "none": "block"}}>
         <div className="flex justify-center">
           <Link to="/profile" className="p-common">Profile</Link>
         </div>
       </div>
+
+      {/* Login and sign up */}
+      <div className="col-span-1 row-span-1" style={{display: loggedIn ? "block": "none"}}>
+        <div>
+          <Link to="/login">Login</Link>
+        </div>
+      </div>
     </div>
+
   );
 };
 

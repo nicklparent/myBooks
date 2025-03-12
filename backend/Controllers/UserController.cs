@@ -36,36 +36,6 @@ namespace backend.Controllers
             return users;
         }
 
-        [HttpPost("signin")]
-        public IActionResult SignIn([FromBody] User user) {
-            string email = user.Email;
-            string password = user.Password; // Hash this password in production
-
-            if (_dbconnection.IsConnect()) {
-                string query = "SELECT * FROM users WHERE Email = @Email AND Password = @Password";
-                using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
-                    cmd.Parameters.AddWithValue("@Email", user.Email);
-                    cmd.Parameters.AddWithValue("@Password", user.Password); // Use hashed password in production
-                    try {
-                        var result = cmd.ExecuteReader();
-                        if (result.Read()) {
-                            return Ok(new { Id = result.GetInt32("Id") });
-                        }
-                        else {
-                            return NotFound(new { message = "User not found" });
-                        }
-                    }
-                    catch (MySqlException e) {
-                        return StatusCode(500, new { message = "Error fetching user: " + e.Message });
-                    }
-                    finally {
-                        _dbconnection.Connection.Close(); // Ensure the connection is closed
-                    }
-                }
-            }
-
-            return StatusCode(500, new { message = "Error connecting to database" });
-        }
 
         [HttpPost]
         public IActionResult CreateNewUser([FromBody] User user) {
@@ -97,6 +67,21 @@ namespace backend.Controllers
             }
             return StatusCode(500, new { message = "Could not connect to data" });
         }
- 
+        
+        public User GetUserByEmailAndPassword(string email, string password) {
+            if (_dbconnection.IsConnect()) {
+                string query = "SELECT * FROM users WHERE email = @email AND password + @password";
+                using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    using (var reader = cmd.ExecuteReader()) {
+                        if (reader.Read()) {
+                            User user = User.ReaderToUser(reader);
+                        }
+                    }
+                }
+            }
+
+        }
     }
 }
