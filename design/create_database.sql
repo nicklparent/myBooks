@@ -20,6 +20,11 @@ CREATE TABLE `my_books`.`users` (
   `Password` VARCHAR(100) NOT NULL,
 PRIMARY KEY (`Id`));
 
+CREATE TABLE `my_books`.`preferences` (
+  `UserId` INT UNIQUE NOT NULL,
+  `Theme` VARCHAR(55) DEFAULT 'dark',
+PRIMARY KEY(`UserId`));
+
 CREATE TABLE `my_books`.`currently_reading` (
   `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `UserId` INT NOT NULL,

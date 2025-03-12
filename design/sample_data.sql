@@ -14,6 +14,11 @@ VALUES
 ('Nicklparent', 'nicklparent@example.com', 'nick', 'parent', 'password2'),
 ('sampleuser', 'sampleuser@gmail.com', 'sample', 'user', 'password3');
 
+INSERT INTO preferences
+(UserId, Theme)
+VALUES
+(1, 'light'),
+(2, 'dark');
 
 INSERT INTO ratings
 (Rating, UserId, BookId)
