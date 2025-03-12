@@ -92,12 +92,44 @@ class BookLayout {
         },
         child: Center(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: FadeInImage.assetNetwork(
+                      placeholder: 'assets/book-default.png',
+                      image: book['coverImageUrl'] ?? ''
+                  ),
+                ),
+              ),
+              SizedBox(width: 12.0,),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildTextBox(book['title'], fontSize: 18),
+                  buildTextBox(book['author']),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
 
+                    ],
+                  )
+                ],
+              )
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Text buildTextBox(String text, {double fontSize = 16.0}){
+    return Text(text,
+      style: TextStyle(
+        fontSize: fontSize,
+        color: Colors.white70
       ),
     );
   }
