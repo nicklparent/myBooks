@@ -3,7 +3,7 @@ using backend.Models;
 using backend.services;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-
+using System.IdentityModel.Tokens.Jwt;
 namespace backend.Controllers
 {
     [ApiController]
@@ -28,9 +28,11 @@ namespace backend.Controllers
             string email = request.Email;
             string password = request.Password;
             UserService userService = new UserService(_dbconnection);
-
             User user = userService.GetUserByEmailAndPassword(email, password);
 
+            if (user != null) {
+                var tokenHandler = new JwtSecurityTokenHandler();
+            }
 
             return StatusCode(500, "Something went wrong");
         }
