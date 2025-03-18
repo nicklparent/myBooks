@@ -15,7 +15,11 @@ namespace backend.Models {
         public string Password { get; set; }
         [Required]
         public string UserName { get; set; }
-
+     
+    }
+    
+    public class UserPreferences {
+        public string ColorTheme { get; set; }
         
     }
 }
