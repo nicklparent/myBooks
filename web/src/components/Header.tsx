@@ -19,9 +19,9 @@ const Header: React.FC = () => {
   }, []);
   
   return (
-    <div className="header *:m-2 p-4 shadow-md bg-white">
+    <div className="header *:m-2 shadow-md">
       {/* logo & image */}
-      <div className="col-span-2 row-span-1">
+      <div className="">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
             <img

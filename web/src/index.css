@@ -14,13 +14,14 @@
     margin: var(--common-margin);
 }
 
-.my-input{
-    border: 0;
+.my-button{
     padding: var(--common-padding);
-    margin: var(--common-margin);
-    border-radius: var(--common-radius);
+    margin: 0 var(--common-margin);
 }
 
-.my-input:hover .my-input:current{
-    border: 0;
+.my-button:hover{
+    cursor: pointer;
+    box-shadow: 0.5rem;
+    text-decoration: underline;
 }
+
