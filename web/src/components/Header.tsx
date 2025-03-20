@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   
   return (
     <div className="header-parent">
-      <div className="header *:m-2 shadow-md">
+      <div className="header *:m-2">
         {/* logo & image */}
         <div className="">
           <div className="flex items-center">
@@ -68,11 +68,8 @@ const Header: React.FC = () => {
         {/* Login and sign up for non-logged in users */}
         <div className="" style={{display: loggedIn ? "none": "block"}}>
           <div className="flex justify-center items-center h-full space-x-4">
-            <Link to="/login" className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
+            <Link to="/login" className="px-4 py-2 rounded bg-amber-900 text-white hover:bg-amber-700 hover:scale-105">
               Login
-            </Link>
-            <Link to="/signup" className="px-4 py-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-50">
-              Sign Up
             </Link>
           </div>
         </div>

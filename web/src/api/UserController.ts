@@ -1,18 +1,6 @@
+import { Preferences, User, ApiError } from "../assets/types";
+
 const backendHost = import.meta.env.VITE_BACKEND_HOST;
-
-type Preferences = {
-  theme: string;
-  contentFilter: boolean;
-}
-
-type User = {
-  id: number;
-  username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-}
 
 export async function getUserPreferences(id: number): Promise<Preferences> {
   try {
@@ -40,7 +28,7 @@ export async function getUserPreferences(id: number): Promise<Preferences> {
   }
 }
 
-export async function getUser(id: number): Promise<User | {message: string, error: string}>{
+export async function getUser(id: number): Promise<User | ApiError>{
     try {
       const response = await fetch(`${backendHost}/user/${id}`);
 
@@ -60,9 +48,44 @@ export async function getUser(id: number): Promise<User | {message: string, erro
 
 export function isLoggedIn(): boolean{
   const token = localStorage.getItem("authToken");
+  return token ? true : false;
+}
 
-  if (token){
-    return true;
+export async function getUserWithEmailAndPassword(email: string, password: string): Promise<User | ApiError>{
+  try{
+    // TODO
+    //create a validator class that will check for invalud input as well
+    if (email == "" || !email){
+      return {
+        message: "email not valid",
+        error: "email field must be filled" 
+      }
+    }
+
+    if (password == "" || !password){
+      return {
+        message: "password not valid",
+        error: "password field must be filled"
+      }
+    }
+    const response = await fetch(`${backendHost}/user/get-by-email-password/${email}/${password}`);
+
+    if (!response.ok){
+      return {
+        message: "could not connect to backend",
+        error: String(response.status),
+      }
+    }
+
+    const data = await response.json();
+    return data;  
+    
+  } catch (error){
+    return {
+      message: "could not find user",
+      error: error instanceof Error ? error.message : ""
+    }
   }
-  return false;
+
+  
 }

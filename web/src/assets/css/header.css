@@ -11,6 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to bottom right, #1d5e32, #1a9465);
 }
 
 @media (max-width: 850px) {

@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+@theme{
+    --color-off-white: #FFFFE4;
+}
+
 :root{
     --common-padding: 0.5rem;
     --common-margin: 0.5rem;
