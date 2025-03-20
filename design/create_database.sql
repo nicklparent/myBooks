@@ -23,6 +23,7 @@ PRIMARY KEY (`Id`));
 CREATE TABLE `my_books`.`preferences` (
   `UserId` INT UNIQUE NOT NULL,
   `Theme` VARCHAR(55) DEFAULT 'dark',
+  `ContentFilter` BOOLEAN DEFAULT true,
 PRIMARY KEY(`UserId`));
 
 CREATE TABLE `my_books`.`currently_reading` (

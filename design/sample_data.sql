@@ -15,10 +15,10 @@ VALUES
 ('sampleuser', 'sampleuser@gmail.com', 'sample', 'user', 'password3');
 
 INSERT INTO preferences
-(UserId, Theme)
+(UserId, Theme, ContentFilter)
 VALUES
-(1, 'light'),
-(2, 'dark');
+(1, 'light', false),
+(2, 'dark', true);
 
 INSERT INTO ratings
 (Rating, UserId, BookId)

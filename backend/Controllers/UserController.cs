@@ -89,14 +89,15 @@ namespace backend.Controllers
         [HttpGet("get-user-preference/{userId}")]
         public IActionResult GetUserPreferences(int userId) {
             if (_dbconnection.IsConnect()) {
-                string query = "SELECT Theme FROM preferences WHERE UserId = @UserId";
+                string query = "SELECT * FROM preferences WHERE UserId = @UserId";
                 using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
                     cmd.Parameters.AddWithValue("@UserId", userId);
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
                             return Ok(new UserPreferences
                             {
-                                Theme = !reader.IsDBNull(reader.GetOrdinal("Theme")) ? reader.GetString("Theme") : "dark"
+                                Theme = !reader.IsDBNull(reader.GetOrdinal("Theme")) ? reader.GetString("Theme") : "dark",
+                                ContentFilter = !reader.IsDBNull(reader.GetOrdinal("ContentFilter")) ? reader.GetBoolean("ContentFilter") : false,
                             });
                         }
                         

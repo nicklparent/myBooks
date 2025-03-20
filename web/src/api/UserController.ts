@@ -17,13 +17,20 @@ type User = {
 export async function getUserPreferences(id: number): Promise<Preferences> {
   try {
     const response = await fetch(`${backendHost}/user/get-user-preference/${id}`);
-
+    
     if (!response.ok) {
+      console.error(`Faied to fetch preferences: ${response.status}`);
+      
       throw new Error(`Failed to fetch preferences: ${response.status}`);
     }
 
-    const data: Preferences = await response.json();
-    return data;
+    const data = await response.json();
+    const userPreference: Preferences = {
+      theme: data.theme ?? "dark",
+      contentFilter: true
+    };
+    
+    return userPreference;
 
   } catch (error) {
     return { 

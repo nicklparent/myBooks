@@ -22,6 +22,7 @@ namespace backend.Models {
     /// </summary>
     public class UserPreferences {
         public string Theme { get; set; }
+        public bool ContentFilter { get; set; }
         
     }
 }
