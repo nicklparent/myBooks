@@ -27,7 +27,7 @@ export async function getUserPreferences(id: number): Promise<Preferences> {
     const data = await response.json();
     const userPreference: Preferences = {
       theme: data.theme ?? "dark",
-      contentFilter: true
+      contentFilter: data.contentFilter ?? true,
     };
     
     return userPreference;
