@@ -17,9 +17,11 @@ namespace backend.Models {
         public string UserName { get; set; }
      
     }
-    
+    /// <summary>
+    /// Contains the preferences of the user so that it can be shared across platforms
+    /// </summary>
     public class UserPreferences {
-        public string ColorTheme { get; set; }
+        public string Theme { get; set; }
         
     }
 }

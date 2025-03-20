@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { isLoggedIn } from "../api/UserController";
+import { getUserPreferences, isLoggedIn } from "../api/UserController";
 import { RiBookShelfLine } from "react-icons/ri";
 import { MdExplore } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
@@ -8,11 +8,21 @@ import { CgProfile } from "react-icons/cg";
 
 const Header: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [temp, setTemp] = useState<string>("");
   
-  useEffect(() => {
+  
+  async function tempSetter (){
+    const preference = await getUserPreferences(1);
+    setTemp(JSON.stringify(preference));
+    console.log(temp);
+    
+  }
+  
+  useEffect(()=> {
     if (isLoggedIn()){
       setLoggedIn(true);
     }
+    tempSetter();
   }, []);
   
   return (
@@ -49,6 +59,9 @@ const Header: React.FC = () => {
             <span className="text-sm">Social</span>
           </Link>
         </div>
+        <div>
+          <p>{temp}</p>
+        </div>
       </div>
       
       {/* Profile button for logged-in users */}
@@ -75,5 +88,6 @@ const Header: React.FC = () => {
     </div>
   );
 };
+
 
 export default Header;

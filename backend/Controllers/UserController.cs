@@ -2,12 +2,13 @@
 using backend.Models;
 using backend.Data;
 using MySql.Data.MySqlClient;
+using backend.services;
 
 namespace backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : Controller {
+    public class UserController : ControllerBase {
         private readonly AppDbContext _dbconnection;
         public UserController(AppDbContext _dbconnection) {
             this._dbconnection = _dbconnection;
@@ -34,6 +35,23 @@ namespace backend.Controllers
                 }
             }
             return users;
+        }
+
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id) {
+            if (_dbconnection.IsConnect()) {
+                string query = "SELECT * FROM users WHERE id = @id";
+                using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
+                    cmd.Parameters.AddWithValue("@id",id);
+                    using (var reader = cmd.ExecuteReader()) {
+                        if (reader.Read()) {
+                            return Ok(UserService.ReaderToUser(reader));
+                        }
+                    }
+                }
+            }
+            return StatusCode(500, new { message = "Could Not find user"}); 
         }
 
 
@@ -68,7 +86,7 @@ namespace backend.Controllers
             return StatusCode(500, new { message = "Could not connect to data" });
         }
 
-        [HttpGet("/get-user-preference/{userId}")]
+        [HttpGet("get-user-preference/{userId}")]
         public IActionResult GetUserPreferences(int userId) {
             if (_dbconnection.IsConnect()) {
                 string query = "SELECT Theme FROM preferences WHERE UserId = @UserId";
@@ -78,7 +96,7 @@ namespace backend.Controllers
                         if (reader.Read()) {
                             return Ok(new UserPreferences
                             {
-                                ColorTheme = !reader.IsDBNull(reader.GetOrdinal("ColorTheme")) ? reader.GetString("ColorTheme") : "dark"
+                                Theme = !reader.IsDBNull(reader.GetOrdinal("Theme")) ? reader.GetString("Theme") : "dark"
                             });
                         }
                         

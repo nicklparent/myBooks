@@ -2,16 +2,16 @@ const backendHost = import.meta.env.VITE_BACKEND_HOST;
 
 type Preferences = {
   theme: string;
-  filter: boolean;
+  contentFilter: boolean;
 }
 
 type User = {
-    id: number;
-    username: string;
-    email: string;
-    firstName: string;
-    lastName: string;
-    password: string;
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
 }
 
 export async function getUserPreferences(id: number): Promise<Preferences> {
@@ -27,27 +27,27 @@ export async function getUserPreferences(id: number): Promise<Preferences> {
 
   } catch (error) {
     return { 
-        theme: "dark",
-        filter: true 
+      theme: "dark",
+      contentFilter: true 
     };
   }
 }
 
 export async function getUser(id: number): Promise<User | {message: string, error: string}>{
     try {
-        const response = await fetch(`${backendHost}/user/${id}`);
+      const response = await fetch(`${backendHost}/user/${id}`);
 
-        if (!response.ok){
-            throw new Error(`Failed to fetch user: ${response.status}`);
-        }
+      if (!response.ok){
+        throw new Error(`Failed to fetch user: ${response.status}`);
+      }
 
-        const data: User = await response.json();
-        return data;
+      const data: User = await response.json();
+      return data;
     } catch (error) {
-        return {
-            message: "could not find user",
-            error: error instanceof Error ? error.message : "unknown error", 
-        }
+      return {
+        message: "could not find user",
+        error: error instanceof Error ? error.message : "unknown error", 
+      }
     }
 }
 
