@@ -67,5 +67,26 @@ namespace backend.Controllers
             }
             return StatusCode(500, new { message = "Could not connect to data" });
         }
+
+        [HttpGet("/get-user-preference/{userId}")]
+        public IActionResult GetUserPreferences(int userId) {
+            if (_dbconnection.IsConnect()) {
+                string query = "SELECT Theme FROM preferences WHERE UserId = @UserId";
+                using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    using (var reader = cmd.ExecuteReader()) {
+                        if (reader.Read()) {
+                            return Ok(new UserPreferences
+                            {
+                                ColorTheme = !reader.IsDBNull(reader.GetOrdinal("ColorTheme")) ? reader.GetString("ColorTheme") : "dark"
+                            });
+                        }
+                        
+                    }
+                }
+            }
+
+            return StatusCode(500, new { message = "could not connect to database"});
+        }
     }
 }

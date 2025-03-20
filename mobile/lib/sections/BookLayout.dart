@@ -74,6 +74,8 @@ class BookLayout {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
+
+
     return Container(
       height: screenHeight * 0.25,
       margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
@@ -113,7 +115,7 @@ class BookLayout {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-
+                      _currentlyReadingBox(),
                     ],
                   )
                 ],
@@ -130,6 +132,22 @@ class BookLayout {
       style: TextStyle(
         fontSize: fontSize,
         color: Colors.white70
+      ),
+    );
+  }
+
+  Container _currentlyReadingBox(){
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
+      color: Color(0x415E6300),
+      child: Row(
+        children: [
+          //text containing current reading status
+
+          //manual input
+          //increment buttons
+
+        ],
       ),
     );
   }
