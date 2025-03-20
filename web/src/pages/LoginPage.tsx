@@ -13,7 +13,7 @@ export const LoginPage: React.FC = () => {
       }}
     >
       <div className="flex flex-col items-center bg-white p-6 md:p-10 rounded-2xl shadow-lg 
-                      w-11/12 md:w-1/3 lg:w-1/4 h-auto md:h-1/3 lg:h-1/3">
+                      w-10/12 md:w-1/3 xl:w-1/4 h-auto md:h-1/3 lg:h-1/3">
         <img src="/images/books.svg" width={150} md-width={200} alt="Books" className="mb-4" />
 
         <form className="flex flex-col gap-4 w-full">
