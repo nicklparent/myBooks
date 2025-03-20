@@ -3,6 +3,7 @@
 :root{
     --common-padding: 0.5rem;
     --common-margin: 0.5rem;
+    --common-radius: 0.4rem;
 }
 
 .p-common{
@@ -11,4 +12,15 @@
 
 .m-common{
     margin: var(--common-margin);
+}
+
+.my-input{
+    border: 0;
+    padding: var(--common-padding);
+    margin: var(--common-margin);
+    border-radius: var(--common-radius);
+}
+
+.my-input:hover .my-input:current{
+    border: 0;
 }

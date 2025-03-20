@@ -25,7 +25,7 @@ const Header: React.FC = () => {
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
             <img
-              src="../images/android-chrome-512x512.png"
+              src="/images/android-chrome-512x512.png"
               alt="logo-image"
               height={46}
               width={46}

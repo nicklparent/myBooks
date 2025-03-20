@@ -19,7 +19,7 @@ module.exports = {
                 text: "E0F2F3"
             },
             // continue as I come up with more themes
-        }
+        },
       },
     },
     plugins: [],
