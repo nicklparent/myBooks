@@ -8,8 +8,10 @@ export const LoginPage: React.FC = () => {
   const [error, setError] = useState<string>("");
 
   //log user in with with the provided email and password
-  async function login(): Promise<void>{
-    const user = getUserWithEmailAndPassword(email, password);
+  async function login(event: React.FormEvent): Promise<void>{
+    event.preventDefault();
+
+    const user = await getUserWithEmailAndPassword(email, password);
     //set errors if the function return an API error
     if ("error" in user){
       setError(`Error: ${user.error}`);
@@ -21,19 +23,21 @@ export const LoginPage: React.FC = () => {
     }
   }
 
-  function setErrorMessage(error: string): void{
+  function setErrorMessage(message: string): void {
     const errorBox = document.querySelector("#error-box");
-    
+    if (errorBox) {
+      errorBox.innerHTML = `<div class="text-red-600">${message}</div>`;
+    }
   }
 
+
   useEffect(() => {
-    if (error === "unknown error"){
-
+    if (error){
+      setErrorMessage(error);
     }
-    if (error == "email field must be filled"){
+  }, [setError]);
 
-    }
-  }, [setError])
+
   return (
     <div
       className="flex justify-center items-center shadow-md min-h-screen w-full"
@@ -43,14 +47,15 @@ export const LoginPage: React.FC = () => {
     >
       <div className="flex flex-col items-center bg-off-white p-6 md:p-10 rounded-2xl shadow-lg 
                       w-10/12 md:w-1/3 xl:w-1/4 h-auto md:h-1/3 lg:h-1/3">
+        {/* svg logo */}
         <img src="/images/books.svg" width={150} md-width={200} alt="Books" className="mb-4" />
-
-        <form action={login} className="flex flex-col gap-4 w-full">
+        {/* Main form section */}
+        <form onSubmit={login} className="flex flex-col gap-4 w-full">
           <div className="flex flex-col">
-            <label htmlFor="email" className="text-sm font-semibold text-gray-700">Email</label>
+            <label htmlFor="email-in" className="text-sm font-semibold text-gray-700">Email</label>
             <input
-              type="email"
-              id="email"
+              type="text"
+              id="email-in"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -59,22 +64,25 @@ export const LoginPage: React.FC = () => {
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="password" className="text-sm font-semibold text-gray-700">Password</label>
+            <label htmlFor="password-in" className="text-sm font-semibold text-gray-700">Password</label>
             <input
               type="password"
-              id="password"
+              id="password-in"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
               required
             />
+            {/* Forgot password field 
+              TODO: impliment forgot password process 
+            */}
             <button className="flex justify-baseline my-button !p-0">
               <p className="text-sm text-cyan-700">Forgot Password?</p>
             </button>
-            <div className="error-box">
 
-            </div>
+            {/* Pop up an error box for responsiveness upon misinput */}
+            <div className="error-box"></div>
           </div>
 
           <button
@@ -88,8 +96,8 @@ export const LoginPage: React.FC = () => {
               className="my-button flex items-center gap-1"
               onClick={() => window.location.href = "/create-account"}
             >
-              <p className="text-lg">New Reader?</p>
-              <FaArrowRightFromBracket />
+              <p className="text-lg mr-2 text-blue-700">New Reader?</p>
+              <FaArrowRightFromBracket color="#1447e6"/>
             </button>
           </div>
         </form>

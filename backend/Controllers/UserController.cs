@@ -23,14 +23,7 @@ namespace backend.Controllers
                 using (var cmd = new MySqlCommand(query, _dbconnection.Connection))
                 using (var reader = cmd.ExecuteReader()) {
                     while (reader.Read()) {
-                        users.Add(new User
-                        {
-                            Id = reader.GetInt32("Id"),
-                            Email = reader.GetString("Email"),
-                            FirstName = reader.GetString("FirstName"),
-                            LastName = reader.GetString("LastName"),
-                            Password = reader.GetString("Password"),
-                        });
+                        users.Add(UserService.ReaderToUser(reader));
                     }
                 }
             }
@@ -52,6 +45,25 @@ namespace backend.Controllers
                 }
             }
             return StatusCode(500, new { message = "Could Not find user"}); 
+        }
+
+        [HttpGet("get-by-email-password/{email}/{password}")]
+        public IActionResult GetByEmailAndPassword(string email, string password) {
+            if (!_dbconnection.IsConnect()) {
+                return StatusCode(500, new { message = ""});
+            }
+
+            string query = "SELECT * FROM users WHERE Email = @email AND Password = @password";
+            using (var cmd = new MySqlCommand(query, _dbconnection.Connection)) {
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@password", password);
+                using (var reader = cmd.ExecuteReader()) {
+                    if (reader.Read()) {
+                        return Ok(UserService.ReaderToUser(reader));
+                    }
+                }
+            }
+            return StatusCode(400, new { message = "could not find user" });
         }
 
 

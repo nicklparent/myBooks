@@ -21,3 +21,9 @@
         margin-right: auto;
     }
 }
+
+@media (min-height: 1100px){
+    .header-parent{
+        height: 5dvh;
+    }
+}
