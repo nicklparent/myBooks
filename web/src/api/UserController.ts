@@ -51,11 +51,9 @@ export function isLoggedIn(): boolean{
   return token ? true : false;
 }
 
-export async function getUserWithEmailAndPassword(email: string, password: string): Promise<User | ApiError>{
+export async function loginWithEmailAndPassword(email: string, password: string): Promise<User | ApiError>{
   try{
-    // TODO
-    //create a validator class that will check for invalud input as well
-    if (email == "" || !email){
+    if (email.trim() == "" || !email.trim()){
       return {
         message: "email not valid",
         error: "email field must be filled" 
@@ -68,24 +66,39 @@ export async function getUserWithEmailAndPassword(email: string, password: strin
         error: "password field must be filled"
       }
     }
-    const response = await fetch(`${backendHost}/user/get-by-email-password/${email}/${password}`);
+    
+    const response = await fetch(`${backendHost}/auth/login`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({email: email, password: password})
+    });
 
     if (!response.ok){
       return {
-        message: "could not connect to backend",
-        error: String(response.status),
+        message: "could not find user",
+        error: "Error finding user information"
       }
     }
 
     const data = await response.json();
-    return data;  
+
+    localStorage.setItem('authToken', data.token);
+
+    const user: User = {
+      id: data.id,
+      email: data.email,
+      password: data.password,
+      username: data.username ?? "",
+      firstName: data.firstName ?? "",
+      lastName: data.lastName ?? ""
+    }
     
   } catch (error){
     return {
-      message: "could not find user",
+      message: "Authentication failed",
       error: error instanceof Error ? error.message : ""
     }
   }
-
-  
 }

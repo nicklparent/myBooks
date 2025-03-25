@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
-import { getUserWithEmailAndPassword } from "../api/UserController";
+import { loginWithEmailAndPassword } from "../api/UserController";
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -11,14 +11,13 @@ export const LoginPage: React.FC = () => {
   async function login(event: React.FormEvent): Promise<void>{
     event.preventDefault();
 
-    const user = await getUserWithEmailAndPassword(email, password);
+    const user = await loginWithEmailAndPassword(email, password);
     //set errors if the function return an API error
     if ("error" in user){
       setError(`Error: ${user.error}`);
     }
 
     if ("id" in user){
-      sessionStorage.setItem("authToken", String(user.id));
       window.location.href = "/";
     }
   }
@@ -35,7 +34,7 @@ export const LoginPage: React.FC = () => {
     if (error){
       setErrorMessage(error);
     }
-  }, [setError]);
+  }, [error]);
 
 
   return (
