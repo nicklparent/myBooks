@@ -36,7 +36,16 @@ export async function getUser(id: number): Promise<User | ApiError>{
         throw new Error(`Failed to fetch user: ${response.status}`);
       }
 
-      const user: User = await response.json();
+      const data = await response.json();
+
+      const user: User = {
+        id: data.id,
+        email: data.email,
+        password: "",
+        firstName: data.firstName ?? "",
+        lastName: data.lastName ?? "",
+        username: data.username ?? "",
+      }
       return user;
     } catch (error) {
       return {
