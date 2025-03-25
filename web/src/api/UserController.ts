@@ -37,7 +37,8 @@ export async function getUser(id: number): Promise<User | ApiError>{
       }
 
       const data = await response.json();
-
+      console.log();
+      
       const user: User = {
         id: data.id,
         email: data.email,

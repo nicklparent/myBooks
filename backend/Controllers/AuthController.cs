@@ -86,7 +86,7 @@ namespace backend.Controllers {
                 issuer: _configuration["JwtSettings:Issuer"],
                 audience: _configuration["JwtSettings:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddHours(2), // Shorter expiration for security
+                expires: DateTime.UtcNow.AddDays(30), 
                 signingCredentials: credentials
             );
 
