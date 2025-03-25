@@ -36,8 +36,8 @@ export async function getUser(id: number): Promise<User | ApiError>{
         throw new Error(`Failed to fetch user: ${response.status}`);
       }
 
-      const data: User = await response.json();
-      return data;
+      const user: User = await response.json();
+      return user;
     } catch (error) {
       return {
         message: "could not find user",
@@ -51,6 +51,8 @@ export function isLoggedIn(): boolean{
   return token ? true : false;
 }
 
+
+// Handle the main login processes of the site
 export async function loginWithEmailAndPassword(email: string, password: string): Promise<User | ApiError>{
   try{
     if (email.trim() == "" || !email.trim()){
@@ -94,6 +96,8 @@ export async function loginWithEmailAndPassword(email: string, password: string)
       firstName: data.firstName ?? "",
       lastName: data.lastName ?? ""
     }
+
+    return user;
     
   } catch (error){
     return {
