@@ -3,7 +3,8 @@ import { Loading } from '../assets/loading';
 import { Book, GetAllBooks } from '../api/BookController';
 import { Preferences, User } from '../assets/types';
 import { jwtDecode } from 'jwt-decode';
-import { getUser, getUserPreferences } from '../api/UserController';
+import { getUser } from '../api/UserController';
+import { getUserPreferences } from '../api/PrefernceController';
 
 export default function HomePage() {
     const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,7 @@ export default function HomePage() {
                     const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]
                     const userData = await getUser(userId);
                     setPreferences(await getUserPreferences(userId));
+
                     if ('error' in userData) {
                         setError(userData.message);
                     } else {
