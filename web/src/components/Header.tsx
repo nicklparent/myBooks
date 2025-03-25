@@ -6,6 +6,7 @@ import { MdExplore } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import "../assets/css/header.css";
+import { ProfileDropDown } from "../assets/profile-drop";
 
 
 const Header: React.FC = () => {
@@ -57,12 +58,7 @@ const Header: React.FC = () => {
         
         {/* Profile button for logged-in users */}
         <div className="" style={{display: loggedIn ? "block": "none"}}>
-          <div className="flex justify-end items-center h-full">
-            <Link to="/profile" className="flex items-center text-gray-700 hover:text-blue-600">
-              <CgProfile className="text-2xl mr-1" />
-              <span>Profile</span>
-            </Link>
-          </div>
+          <ProfileDropDown />
         </div>
         
         {/* Login and sign up for non-logged in users */}
