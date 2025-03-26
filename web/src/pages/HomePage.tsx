@@ -12,7 +12,7 @@ export default function HomePage() {
 
     async function fetchData() {
         const userData = await currentUser();
-        
+                
         if (userData){
             setUser(userData);
             const preferences = await getUserPreferences(userData.id);

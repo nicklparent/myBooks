@@ -14,9 +14,11 @@ const Header: React.FC = () => {
   
   
   useEffect(()=> {        
-    if (currentUser() != null){
-      setLoggedIn(true);
+    const checkUser = async () => {
+      const user = await currentUser();
+      setLoggedIn(user !== null);
     }
+    checkUser();
   }, []);
   
   return (
