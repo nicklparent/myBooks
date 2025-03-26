@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getUserPreferences, isLoggedIn } from "../api/UserController";
+import { currentUser } from "../api/UserController";
 import { RiBookShelfLine } from "react-icons/ri";
 import { MdExplore } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
-import { CgProfile } from "react-icons/cg";
 import "../assets/css/header.css";
 import { ProfileDropDown } from "../assets/profile-drop";
+import { jwtDecode } from "jwt-decode";
 
 
 const Header: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   
   
-  useEffect(()=> {
-    if (isLoggedIn()){
+  useEffect(()=> {        
+    if (currentUser() != null){
       setLoggedIn(true);
     }
   }, []);

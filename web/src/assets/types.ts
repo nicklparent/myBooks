@@ -13,6 +13,10 @@ export type User = {
   password: string;
 }
 
+export type Collections = {
+  
+}
+
 export type ApiError = {
   message: string,
   error: string

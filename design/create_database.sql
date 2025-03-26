@@ -52,6 +52,15 @@ CREATE TABLE `my_books`.`completed_read` (
   FOREIGN KEY (BookId) REFERENCES books(Id),
 PRIMARY KEY (`Id`));
 
+CREATE TABLE `my_books`.`custom_collections` (
+  `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
+  `UserId` INT NOT NULL,
+  `BookId` INT NOT NULL,
+  `Title` VARCHAR(150),
+  FOREIGN KEY (UserId) REFERENCES users(Id),
+  FOREIGN KEY (BookId) REFERENCES books(Id),
+PRIMARY KEY (`Id`));
+
 CREATE TABLE `my_books`.`ratings` (
   `Id` INT UNIQUE NOT NULL AUTO_INCREMENT,
   `Rating` DECIMAL(10, 2) NOT NULL,
