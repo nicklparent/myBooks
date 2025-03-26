@@ -1,9 +1,6 @@
 import { Preferences } from "../assets/types";
 const backendHost = import.meta.env.VITE_BACKEND_HOST;
 
-preferenceToString: String = () => {
-    return "";
-}
 
 export async function getUserPreferences(id: number): Promise<Preferences> {
   try {
