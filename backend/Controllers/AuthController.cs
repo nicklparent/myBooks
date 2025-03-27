@@ -65,10 +65,14 @@ namespace backend.Controllers {
                 cmd.Parameters.AddWithValue("@Password", password);
                 using (var reader = cmd.ExecuteReader()) {
                     if (reader.Read()) {
+                        reader.Close();
+                        _dbconnection.CloseConnection();
                         return UserService.ReaderToUser(reader);
                     }
+                    reader.Close();
                 }
             }
+            _dbconnection.CloseConnection();
             return null;
         }
 

@@ -25,8 +25,10 @@ namespace backend.Controllers
                     while (reader.Read()) {
                         users.Add(UserService.ReaderToUser(reader));
                     }
+                    reader.Close();
                 }
             }
+            _dbconnection.CloseConnection();
             return users;
         }
 
@@ -39,11 +41,14 @@ namespace backend.Controllers
                     cmd.Parameters.AddWithValue("@id",id);
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
+                            reader.Close();
+                            _dbconnection.CloseConnection();
                             return Ok(UserService.ReaderToUser(reader));
                         }
                     }
                 }
             }
+            _dbconnection.CloseConnection();
             return StatusCode(500, new { message = "Could Not find user"}); 
         }
 
@@ -59,10 +64,14 @@ namespace backend.Controllers
                 cmd.Parameters.AddWithValue("@password", password);
                 using (var reader = cmd.ExecuteReader()) {
                     if (reader.Read()) {
+                        reader.Close();
+                        _dbconnection.CloseConnection();
                         return Ok(UserService.ReaderToUser(reader));
                     }
+                    reader.Close();
                 }
             }
+            _dbconnection.CloseConnection();
             return StatusCode(400, new { message = "could not find user" });
         }
 

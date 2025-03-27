@@ -23,6 +23,7 @@ namespace backend.Controllers {
                     while (reader.Read()) {
                         books.Add(BookService.ReaderToBook(reader));
                     }
+                    reader.Close();
                 }
                 _dbconnection.CloseConnection();
             }
@@ -40,11 +41,14 @@ namespace backend.Controllers {
                     using (var reader = cmd.ExecuteReader()) {
                         if (reader.Read()) {
                             Book book = BookService.ReaderToBook(reader);
+                            reader.Close();
+                            _dbconnection.CloseConnection();
                             return Ok(book);
                         }
                     }
                 }
             }
+            _dbconnection.CloseConnection();
             return StatusCode(500, new { message = "Could not find book" });
         }
 
@@ -70,9 +74,11 @@ namespace backend.Controllers {
                         while (reader.Read()) {
                             books.Add(BookService.ReaderToBook(reader));
                         }
+                        reader.Close();
                     }
                 }
             }
+            _dbconnection.CloseConnection();
             return books;
         }
     }

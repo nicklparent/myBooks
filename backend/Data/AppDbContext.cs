@@ -27,7 +27,6 @@ namespace backend.Data {
         public void CloseConnection() {
             if  (Connection.State == System.Data.ConnectionState.Open) {
                 Connection.Close();
-
             }
         }
     }
